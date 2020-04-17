@@ -1,0 +1,3 @@
+#!/usr/bin/env ruby
+
+LookeyMonster::CLI.new.call
