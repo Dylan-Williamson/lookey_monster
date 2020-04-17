@@ -1,6 +1,2 @@
-require "lookey_monster/version"
-
-module LookeyMonster
-  class Error < StandardError; end
-  # Your code goes here...
-end
+require_relative "./lookey_monster/version"
+require_relative './lookey_monster/cli'
