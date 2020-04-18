@@ -1,6 +1,12 @@
 class LookeyMonster::CLI 
   def start
-    print "\n\n
+    print logo
+    menu
+    goodbye
+  end
+  
+  def logo 
+    "\n\n
     ▄▄▌              ▄ •▄ ▄▄▄ . ▄· ▄▌    
     ██•  ▪     ▪     █▌▄▌▪▀▄.▀·▐█▪██▌    
     ██▪   ▄█▀▄  ▄█▀▄ ▐▀▀▄·▐▀▀▪▄▐█▌▐█▪    
@@ -11,8 +17,6 @@ class LookeyMonster::CLI
 ▐█ ▌▐▌▐█· ▄█▀▄ ▐█▐▐▌▄▀▀▀█▄ ▐█.▪▐▀▀▪▄▐▀▀▄ 
 ██ ██▌▐█▌▐█▌.▐▌██▐█▌▐█▄▪▐█ ▐█▌·▐█▄▄▌▐█•█▌
 ▀▀  █▪▀▀▀ ▀█▄▀▪▀▀ █▪ ▀▀▀▀  ▀▀▀  ▀▀▀ .▀  ▀\n\n\n\n".light_cyan
-    menu
-    goodbye
   end
   
   def menu
@@ -21,17 +25,7 @@ class LookeyMonster::CLI
   end
   
   def goodbye
-    print "\n\n\n\n
-    ▄▄▌              ▄ •▄ ▄▄▄ . ▄· ▄▌    
-    ██•  ▪     ▪     █▌▄▌▪▀▄.▀·▐█▪██▌    
-    ██▪   ▄█▀▄  ▄█▀▄ ▐▀▀▄·▐▀▀▪▄▐█▌▐█▪    
-    ▐█▌▐▌▐█▌.▐▌▐█▌.▐▌▐█.█▌▐█▄▄▌ ▐█▀·.    
-    .▀▀▀  ▀█▄▀▪ ▀█▄▀▪·▀  ▀ ▀▀▀   ▀ •     
-• ▌ ▄ ·.        ▐ ▄ .▄▄ · ▄▄▄▄▄▄▄▄ .▄▄▄  
-·██ ▐███▪▪     •█▌▐█▐█ ▀. •██  ▀▄.▀·▀▄ █·
-▐█ ▌▐▌▐█· ▄█▀▄ ▐█▐▐▌▄▀▀▀█▄ ▐█.▪▐▀▀▪▄▐▀▀▄ 
-██ ██▌▐█▌▐█▌.▐▌██▐█▌▐█▄▪▐█ ▐█▌·▐█▄▄▌▐█•█▌
-▀▀  █▪▀▀▀ ▀█▄▀▪▀▀ █▪ ▀▀▀▀  ▀▀▀  ▀▀▀ .▀  ▀".light_cyan
-    print "\n\n\n\n   Thank you for using LooKey Monster!\n\n\n".light_red
+    print logo
+    print "\n   Thank you for using LooKey Monster!\n\n\n".light_red
   end
 end
