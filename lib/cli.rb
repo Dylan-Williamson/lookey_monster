@@ -1,4 +1,3 @@
-require 'colorize'
 class LookeyMonster::CLI 
   def start
     print "\n\n
