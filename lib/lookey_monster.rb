@@ -1,4 +1,5 @@
 require_relative './lookey_monster/version'
+require_relative '../secrets'
 require 'httparty'
 require 'colorize'
 require_relative './cli'
