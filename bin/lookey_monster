@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require './lib/lookey_monster'
+require_relative '../lib/lookey_monster'
 
-LookeyMonster::CLI.new.call
+LookeyMonster::CLI.new.start

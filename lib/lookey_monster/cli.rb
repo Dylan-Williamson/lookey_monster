@@ -1,6 +1,6 @@
 require 'colorize'
 class LookeyMonster::CLI 
-  def call
+  def start
     print "\n\n
     ▄▄▌              ▄ •▄ ▄▄▄ . ▄· ▄▌    
     ██•  ▪     ▪     █▌▄▌▪▀▄.▀·▐█▪██▌    
