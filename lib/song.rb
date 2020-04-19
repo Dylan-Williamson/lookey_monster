@@ -7,6 +7,6 @@ class LookeyMonster::Song
   
   attr_accessor :track, :artist, :key, :tempo
   
-  def initialize(artist, title)
+  def initialize
   end
 end

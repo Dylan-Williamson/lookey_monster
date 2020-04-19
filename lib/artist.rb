@@ -1,4 +1,4 @@
-class Artist 
+class LookeyMonster::Artist 
   @@all = []
   
   def self.all
