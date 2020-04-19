@@ -1,8 +1,12 @@
 class LookeyMonster::CLI 
   def start
-    print logo
     menu
-    goodbye
+    
+    user_input = nil
+    
+    while user_input != nil
+      LookeyMonster::CLI.new.scraper
+    end
   end
   
   def logo 
@@ -20,7 +24,8 @@ class LookeyMonster::CLI
   end
   
   def menu
-    print "       Please enter artist below:\n\n\n".light_red
+    print logo
+    print "    Please enter artist & song below:\n\n\n".light_red
     input = gets.chomp
   end
   
