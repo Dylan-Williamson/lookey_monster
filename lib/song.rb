@@ -1,11 +1,11 @@
-class Song 
+class LookeyMonster::Song
   @@all = []
   
   def self.all
     @@all 
   end
   
-  attr_accessor :artist, :title, :tempo, :key, :relative_minor, :lyrics
+  attr_accessor :track, :artist, :key, :tempo
   
   def initialize(artist, title)
   end
