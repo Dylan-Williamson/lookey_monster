@@ -6,6 +6,10 @@ class LookeyMonster::CLI
     
     while user_input != nil
       LookeyMonster::CLI.new.scraper
+      
+      print logo
+      print "Track: #{:track}\nArtist: #{:artist}\nKey: #{:key}\nTempo: #{:tempo}\n\n"
+      print goodbye
     end
   end
   
@@ -30,7 +34,6 @@ class LookeyMonster::CLI
   end
   
   def goodbye
-    print logo
     print "\n   Thank you for using LooKey Monster!\n\n\n".light_red
   end
 end
