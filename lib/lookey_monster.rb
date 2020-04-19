@@ -1,8 +1,5 @@
 require_relative './lookey_monster/version'
 require 'httparty'
-require 'spotify-client'
 require 'colorize'
 require_relative './cli'
 require_relative './api_manager'
-require 'json'
-require 'excon'
