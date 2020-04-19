@@ -5,12 +5,19 @@ class LookeyMonster::CLI
   
   def start
     menu
-    get_song_info
+    
+    user_input = nil
+    
+    while user_input != nil
+    
+      LookeyMonster::CLI.new.scraper
+      
+      print logo
+      print "Track: #{:track}\nArtist: #{:artist}\nKey: #{:key}\nTempo: #{:tempo}\n\n"
+      print options
+    end
   end
   
-  def get_song_info
-    LookeyMonster::Scraper.get_info("user_input")
-  end
   
   def logo 
     "\n\n
@@ -26,6 +33,9 @@ class LookeyMonster::CLI
 ▀▀  █▪▀▀▀ ▀█▄▀▪▀▀ █▪ ▀▀▀▀  ▀▀▀  ▀▀▀ .▀  ▀\n\n\n\n".light_cyan
   end
   
+  def options
+    print "Would you like to search for another song? (YES or NO)"
+  end
   def menu
     print logo
     print "    Please enter artist & song below:\n\n\n".light_red
@@ -38,12 +48,3 @@ class LookeyMonster::CLI
 end
 
 LookeyMonster::CLI
-    # user_input = nil
-    
-    # while user_input != nil
-    #   LookeyMonster::CLI.new.scraper
-      
-    #   print logo
-    #   print "Track: #{:track}\nArtist: #{:artist}\nKey: #{:key}\nTempo: #{:tempo}\n\n"
-    #   print goodbye
-    # end
