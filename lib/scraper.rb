@@ -10,12 +10,13 @@ def scraper
   song_listings = parsed_page.css('div.search-info-container')
   song_listings.each do |song_listing|
     song = {
-      track: song_listing.css('div.row.search-track-name').text
-      artist: song_listing.css('div.row.search-artist-name').text
-      key: song_listing.css('div.row.search-attribute-value').first.text
-      tempo: song_listing.css('div.row.search-attribute-value')[1].text
+      track: song_listing.css('div.row.search-track-name').text,
+      artist: song_listing.css('div.row.search-artist-name').text,
+      key: song_listing.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[0],
+      tempo: song_listing.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[3] + " BPM",
     }
-  binding.pry 
+  binding.pry
+  end
 end
 
 scraper
