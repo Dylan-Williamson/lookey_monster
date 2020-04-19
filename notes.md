@@ -7,3 +7,5 @@ https://accounts.spotify.com/authorize?client_id=804d8869e91a4e839413f2f6ad0f50b
 804d8869e91a4e839413f2f6ad0f50b6:1297fefdc84147e08ecb0a19bac9b39e
 
 curl -H "Authorization: Basic ODA0ZDg4NjllOTFhNGU4Mzk0MTNmMmY2YWQwZjUwYjY6MTI5N2ZlZmRjODQxNDdlMDhlY2IwYTE5YmFjOWIzOWU=" -d grant_type=authorization_code -d code=AQBkE3KUaoMDiIdkUHBSPXzBxy5PDNnbU5mgM3Jk4e3TVV0gCzuXGpPn369AW3eepLX267JTVJqGKbVBfePsMptgJH6tPlWYoCFVf7D_-kbJ1pNBfWjDVoesgG3SMOnDcxmhefqBXcuymCt4eScGIOmHxls96nrjx57Tk8aKsvKOMxU3SGu2uSdhz1NJ5HsHSSGevzFyjYVU-K2eIY-S3ZmLLCqKDhkH -d redirect_uri=https%3A%2F%2Fgithub.com%2FDylan-Williamson%2Flookey_monster https://accounts.spotify.com/api/token
+
+{"access_token":"BQCaxleGyRehiCGGKR70-BnjIIUoocl2drUt9PZUbuckwI2gHNxLPhspHv_DZQzNvyrBRIVTAqy7cMFyoig9ovSVklM49PrNF3biJLnDu31WX3QtI-4_7bNYASDWCGlGf-xoHG7x-2VNmg","token_type":"Bearer","expires_in":3600,"refresh_token":"AQDFJnF-sD0CqfQUt6O6eowpcgPwPtLK_G1Rk1sar6CaW85gulzL48bGmIL4QWwT3SVyrvCrgjoby6sCEG43IgGyNjVLH6W5FP9KBo5FoMb6Wgn0QmqqVCxhvWRnCjhlnZY","scope":""}
