@@ -7,4 +7,6 @@ gem "httparty", "~> 0.18.0"
 
 gem "colorize", "~> 0.8.1"
 
-gem "spotify-client"
+gem 'nokogiri', '~> 1.6', '>= 1.6.8'
+
+gem 'pry'

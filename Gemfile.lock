@@ -6,18 +6,23 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    coderay (1.1.2)
     colorize (0.8.1)
-    excon (0.73.0)
     httparty (0.18.0)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
+    method_source (1.0.0)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2019.1009)
+    mini_portile2 (2.4.0)
     multi_xml (0.6.0)
+    nokogiri (1.10.9)
+      mini_portile2 (~> 2.4.0)
+    pry (0.13.1)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
     rake (10.5.0)
-    spotify-client (0.0.10)
-      excon (~> 0.37)
 
 PLATFORMS
   ruby
@@ -27,8 +32,9 @@ DEPENDENCIES
   colorize (~> 0.8.1)
   httparty (~> 0.18.0)
   lookey_monster!
+  nokogiri (~> 1.6, >= 1.6.8)
+  pry
   rake (~> 10.0)
-  spotify-client
 
 BUNDLED WITH
    2.0.1
