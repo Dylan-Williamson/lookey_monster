@@ -1,0 +1,9 @@
+Client ID 804d8869e91a4e839413f2f6ad0f50b6
+Client Secret 1297fefdc84147e08ecb0a19bac9b39e
+user-library-read
+
+https://accounts.spotify.com/authorize?client_id=804d8869e91a4e839413f2f6ad0f50b6&scopes=user-library-read&response_type=code&redirect_uri=https%3A%2F%2Fgithub.com%2FDylan-Williamson%2Flookey_monster
+
+804d8869e91a4e839413f2f6ad0f50b6:1297fefdc84147e08ecb0a19bac9b39e
+
+curl -H "Authorization: Basic ODA0ZDg4NjllOTFhNGU4Mzk0MTNmMmY2YWQwZjUwYjY6MTI5N2ZlZmRjODQxNDdlMDhlY2IwYTE5YmFjOWIzOWU=" -d grant_type=authorization_code -d code=AQBkE3KUaoMDiIdkUHBSPXzBxy5PDNnbU5mgM3Jk4e3TVV0gCzuXGpPn369AW3eepLX267JTVJqGKbVBfePsMptgJH6tPlWYoCFVf7D_-kbJ1pNBfWjDVoesgG3SMOnDcxmhefqBXcuymCt4eScGIOmHxls96nrjx57Tk8aKsvKOMxU3SGu2uSdhz1NJ5HsHSSGevzFyjYVU-K2eIY-S3ZmLLCqKDhkH -d redirect_uri=https%3A%2F%2Fgithub.com%2FDylan-Williamson%2Flookey_monster https://accounts.spotify.com/api/token
