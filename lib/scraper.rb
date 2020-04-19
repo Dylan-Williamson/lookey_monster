@@ -5,13 +5,13 @@ require_relative './lookey_monster'
 
 class LookeyMonster::Scraper
   
-  @@all = []
+  # @@all = []
   
-  def scraper
+  def self.get_info(user_input)
     user_input = gets.chomp
     user_input = user_input.to_s
     
-    url = "https://tunebat.com/Search?q=" + user_input.gsub!(" ","+")
+    url = "https://tunebat.com/Search?q=" + user_input.to_s.gsub!(" ","+")
     html = HTTParty.get(url)
     parsed_page = Nokogiri::HTML(html)
     
