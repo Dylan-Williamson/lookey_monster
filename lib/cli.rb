@@ -74,50 +74,32 @@ class LookeyMonster::CLI
 
     song = LookeyMonster::Song.find(input.to_i)
 
-    print_restaurant(restaurant)
+    print_top_song(song)
 
-    puts ""
-    puts "Would you like to see another restaurant? Enter Y or N"
+    print "\n\nWould you like to view another song? Yes[y] or No[n]"
 
     input = gets.strip.downcase
     if input == "y"
       start
     elsif input == "n"
-      puts ""
-      puts "Thank you! Have a great day!"
+      print logo
+      print "Thank you for using LooKEY Monster!"
       exit
     else
       puts ""
-      puts "I don't understand that answer."
+      puts "I'm sorry, could you try that again? Enter Yes[y] or No[n]"
       start
     end
   end
 
-  def print_restaurant(restaurant)
-    puts ""
-    puts "----------- #{restaurant.name} - #{restaurant.position} -----------"
-    puts ""
-    puts "#{restaurant.intro_quote}"
-    puts "Location:           #{restaurant.location}"
-    puts "Head Chef:          #{restaurant.head_chef}"
-    puts "Contact:            #{restaurant.contact}"
-    puts "Phone:             #{restaurant.phone}"
-    puts "Website:            #{restaurant.website_url}"
-
-    puts ""
-    puts "---------------Description--------------"
-    puts ""
-    puts "#{restaurant.description}"
-    puts ""
-
-    puts ""
-    puts "---------------About the Food--------------"
-    puts ""
-    puts "#{restaurant.food_style}"
-    puts ""
+  def print_top_song(song)
+    print logo
+    print "----------- #{song.name} by #{song.track} -----------\n".light_red
+    print "Key: ".light_red + "#{song.key}".cyan
+    print "Tempo: ".light_red + "#{song.tempo}".cyan
   end
 
-  def print_restaurants(from_number)
+  def print_top_songs(from_number)
     puts ""
     puts "---------- Restaurants #{from_number} - #{from_number+9} ----------"
     puts ""
