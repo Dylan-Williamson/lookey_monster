@@ -76,8 +76,8 @@ class LookeyMonster::CLI
   
   def print_top_song(song)
     print logo
-    print "----------- #{song.name} by #{song.track} -----------\n".light_red
-    print "Key: ".light_red + "#{song.key}".cyan
+    print "#{song.track} by #{song.artist}\n".light_red
+    print "Key: ".light_red + "#{song.key}\n".cyan
     print "Tempo: ".light_red + "#{song.tempo}".cyan
   end
 
