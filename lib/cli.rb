@@ -14,7 +14,7 @@ class LookeyMonster::CLI
     print "Top 100 List".light_red
     print "--------------\n\n".cyan
     print "--------------Enter [list]--------------\n\n"
-    print "--------------".cyan
+    print "-------------".cyan
     print "Custom Search".light_red
     print "--------------\n\n".cyan
     print "-------------Enter [search]-------------\n\n"
