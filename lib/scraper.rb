@@ -37,10 +37,11 @@ end
         tempo: song_listing.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[3] + " BPM"
       }
       @@songs << song
-      binding.pry
     end
     @@songs.each do |song|
-      
+      LookeyMonster::Song.new
+      binding.pry
+    end
   end
 
     

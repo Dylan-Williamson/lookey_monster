@@ -1,5 +1,10 @@
+require 'pry'
+require_relative './lookey_monster'
+require 'nokogiri'
+require 'open-uri'
+require 'httparty'
 class LookeyMonster::Song
-
+ 
   attr_accessor :track, :artist, :key, :tempo, :url
 
   @@all = []
