@@ -12,10 +12,12 @@ class LookeyMonster::CLI
   def start
     print "--------------".cyan
     print "Top 100 List".light_red
-    print "--------------\n".cyan
-    print "Enter [list]\n"
-    print "Custom Search\n".light_red
-    print "Enter [search]\n"
+    print "--------------\n\n".cyan
+    print "--------------Enter [list]--------------\n\n"
+    print "--------------".cyan
+    print "Custom Search".light_red
+    print "--------------\n\n".cyan
+    print "-------------Enter [search]-------------\n\n"
     input = gets.chomp.downcase
     if input == "list"
       print "\n\nWhich song would you like to see? [1-100]"
