@@ -4,12 +4,12 @@ class LookeyMonster::Song
 
   @@all = []
 
-  def self.new_from_index_page(r)
+  def self.new_from_index_page(s)
     self.new(
-      r.css("h2").text,
-      "https://www.theworlds50best.com#{r.attribute("href").text}",
-      r.css("p")[1].text,
-      r.css(".position").text
+      s.css("div.row.search-track-name").text,
+      s.css('div.row.search-artist-name').text,
+      s.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[0],
+      s.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[3] + " BPM"
       )
   end
   
@@ -31,45 +31,8 @@ class LookeyMonster::Song
     self.all[id-1]
   end
 
-  def intro_quote #DONE
-    @bintro_quote ||= doc.css("h3.intro-quote").text
-    # @best_dish ||= doc.xpath("//div[@class='c-4 nr nt']/ul[3]/li").text
-  end
-
-  def food_style
-    
-    @food_style ||= doc.css("div.content.profile").css('p')[6].text
-    # @food_style ||= doc.xpath("//div[@class='c-4 nr nt']/ul[2]/li").text
-  end
-
-  def contact #DONE
-    @contact ||= doc.css("p.location").text
-    # @contact ||= doc.xpath("//div[@class='c-4 nr nt']/ul[4]/li[1]").text.split("+").join(". Tel: +")
-  end
-
-  def phone #DONE
-    @phone ||= doc.css("a.telephone").text
-    # @contact ||= doc.xpath("//div[@class='c-4 nr nt']/ul[4]/li[1]").text.split("+").join(". Tel: +")
-  end
-
-  def head_chef #DONE
-    @head_chef ||= doc.css("div.on-the-pass").css('p')[0].text
-    # @head_chef ||= doc.xpath("//div[@class='c-4 nr nt']/ul[1]/li").text.split(" (pictured)").join("")
-  end
-
-  def website_url #DONE
- 
-    @website_url ||= doc.css("a.website").attr('href').value
-    # @website_url ||= doc.xpath("//div[@class='c-4 nr nt']/ul[4]/li[2]/a").text
-  end
-
-  def description #DONE
-    @description ||= doc.css("div.content.profile").css('p')[4].text
-    # @description ||= doc.xpath("//div[@class='c-8 nl nt']/p[3]").text
-  end
-
-  def doc
-    @doc ||= Nokogiri::HTML(open(self.url))
+  def html
+    @html ||= Nokogiri::HTML(open(self.url))
   end
 end
 
