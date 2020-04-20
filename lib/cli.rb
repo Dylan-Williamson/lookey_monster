@@ -5,13 +5,17 @@ class LookeyMonster::CLI
   def call
     LookeyMonster::Scraper.new.make_top_songs
     print logo
-    print "Welcome to LooKEY Monster!"
+    print "       WELCOME TO LOOKEY MONSTER!\n\n"
     start
   end
   
   def start
-    print "Would you like to see the top 100 list or do a custom search?".light_red
-    print "Enter [list] or [search]".light_red
+    print "--------------".cyan
+    print "Top 100 List".light_red
+    print "--------------\n".cyan
+    print "Enter [list]\n"
+    print "Custom Search\n".light_red
+    print "Enter [search]\n"
     input = gets.chomp.downcase
     if input == "list"
       print "\n\nWhich song would you like to see? [1-100]"
@@ -56,7 +60,7 @@ class LookeyMonster::CLI
 ·██ ▐███▪▪     •█▌▐█▐█ ▀. •██  ▀▄.▀·▀▄ █·
 ▐█ ▌▐▌▐█· ▄█▀▄ ▐█▐▐▌▄▀▀▀█▄ ▐█.▪▐▀▀▪▄▐▀▀▄ 
 ██ ██▌▐█▌▐█▌.▐▌██▐█▌▐█▄▪▐█ ▐█▌·▐█▄▄▌▐█•█▌
-▀▀  █▪▀▀▀ ▀█▄▀▪▀▀ █▪ ▀▀▀▀  ▀▀▀  ▀▀▀ .▀  ▀\n\n\n\n".light_cyan
+▀▀  █▪▀▀▀ ▀█▄▀▪▀▀ █▪ ▀▀▀▀  ▀▀▀  ▀▀▀ .▀  ▀\n\n\n".light_cyan
   end
   
   # def options

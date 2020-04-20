@@ -1,6 +1,7 @@
 require_relative './lookey_monster/version'
 require 'httparty'
 require 'colorize'
+require 'open-uri'
 require_relative './cli'
 require_relative './scraper'
 require_relative './artist'

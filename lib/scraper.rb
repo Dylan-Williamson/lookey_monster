@@ -26,11 +26,12 @@ class LookeyMonster::Scraper
   end
 
     
-  def self.get_top_page
+  def get_top_page
     Nokogiri::HTML(open("https://tunebat.com/"))
   end
+  
   def scrape_song_index
-    self.get_top_page.css("div.searchResultList.row.main-row")
+    get_top_page.css("div.searchResultList.row.main-row")
   end
   
   def make_top_songs
