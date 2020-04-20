@@ -71,7 +71,7 @@ class LookeyMonster::CLI
   end
   
   def print_searched_song
-    LookeyMonster::Song.all[0]
+    LookeyMonster::Song.all.last
   end
   
   def menu

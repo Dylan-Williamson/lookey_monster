@@ -4,6 +4,8 @@ require_relative './lookey_monster'
 
 class LookeyMonster::Scraper
   
+  @@all = []
+  
   def self.create_song_hash
     url = "https://tunebat.com/"
     html = HTTParty.get(url)
@@ -23,7 +25,6 @@ class LookeyMonster::Scraper
 end
   
   def self.search_scraper
-    @@songs = []
     input = gets.chomp
     url = "https://tunebat.com/Search?q="+input.gsub!(" ","+")
     html = HTTParty.get(url)
@@ -36,12 +37,16 @@ end
         key: song_listing.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[0],
         tempo: song_listing.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[3] + " BPM"
       }
-      @@songs << song
+      @@all << song
     end
-    @@songs.each do |song|
-      LookeyMonster::Song.new
-      # binding.pry
-    end
+    # @@all.each do |song|
+    #   LookeyMonster::Song.new
+    #   # binding.pry
+    # end
+  end
+  
+  def self.all
+    @@all
   end
 
     

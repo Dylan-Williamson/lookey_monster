@@ -26,6 +26,10 @@ class LookeyMonster::Song
     @@all << self
   end
   
+  def self.make_searched_song
+    
+  end
+  
   def self.erase
     @@all.clear
   end
