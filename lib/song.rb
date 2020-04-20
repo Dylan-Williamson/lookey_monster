@@ -3,13 +3,12 @@ class LookeyMonster::Song
   attr_accessor :track, :artist, :key, :tempo, :url
 
   @@all = []
-
-  def self.new_from_index_page(s)
+  def self.new_from_index_page(song)
     self.new(
-      track: s.css("div.row.search-track-name").text,
-      artist: s.css('div.row.search-artist-name').text,
-      key: s.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[0],
-      tempo: s.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[3]
+      track: song.css("div.row.search-track-name").text,
+      artist: song.css('div.row.search-artist-name').text,
+      key: song.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[0],
+      tempo: song.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[3]
       )
   end
   
