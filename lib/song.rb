@@ -31,8 +31,8 @@ class LookeyMonster::Song
     self.all[id-1]
   end
 
-  def html
-    @html ||= Nokogiri::HTML(open(self.url))
+  def doc
+    @doc ||= Nokogiri::HTML(open(self.url))
   end
 end
 

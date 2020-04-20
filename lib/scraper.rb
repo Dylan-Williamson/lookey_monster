@@ -9,7 +9,7 @@ class LookeyMonster::Scraper
   def search_scraper
     @@songs = []
     input = gets.chomp
-    url = "https://tunebat.com/Search?q=" + input.gsub!(" ","+")
+    url = "https://tunebat.com/Search?q="+input.gsub!(" ","+")
     html = HTTParty.get(url)
     parsed_page = Nokogiri::HTML(html)
     song_listings = parsed_page.css('div.search-info-container')
@@ -21,7 +21,7 @@ class LookeyMonster::Scraper
         tempo: song_listing.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[3] + " BPM"
       }
       @@songs << song
-    binding.pry
+    # binding.pry
     end
   end
 

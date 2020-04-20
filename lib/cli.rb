@@ -10,14 +10,7 @@ class LookeyMonster::CLI
   end
   
   def start
-    print "--------------".cyan
-    print "Top 100 List".light_red
-    print "--------------\n\n".cyan
-    print "--------------Enter [list]--------------\n\n"
-    print "-------------".cyan
-    print "Custom Search".light_red
-    print "--------------\n\n".cyan
-    print "-------------Enter [search]-------------\n\n"
+    menu
     input = gets.chomp.downcase
     if input == "list"
       print "\n\nWhich song would you like to see? [1-100]"
@@ -32,21 +25,36 @@ class LookeyMonster::CLI
 
       input = gets.strip.downcase
       if input == "y"
+        print logo
         start
       elsif input == "n"
         print logo
         print "Thank you for using LooKEY Monster!"
         exit
       else
-        puts ""
-        puts "I'm sorry, could you try that again? Enter Yes[y] or No[n]"
+        print "\nI'm sorry, could you try that again? Enter Yes[y] or No[n]"
         start
       end
     elsif input == "search"
-      print "no"
-    else 
-      puts "\nI'm sorry, could you try that again? Enter [list], [search] or [exit]"
+      LookeyMonster::Scraper.new.search_scraper
+    elsif input == "exit"
+      exit
+    else
+      print logo
+      print "Care to try again? Enter [list] [search] or [exit]\n"
+      start
     end
+  end
+  
+  def menu
+    print "--------------".cyan
+    print "Top 100 List".light_red
+    print "--------------\n\n".cyan
+    print "--------------Enter [list]--------------\n\n"
+    print "-------------".cyan
+    print "Custom Search".light_red
+    print "--------------\n\n".cyan
+    print "-------------Enter [search]-------------\n\n"
   end
   
   
@@ -84,7 +92,7 @@ class LookeyMonster::CLI
   def print_top_songs
     print "\nLooKEY Monster's Top 100 List\n"
     LookeyMonster::Song.all.each_with_index do |song, index|
-      puts "#{index + 1}. #{song.track} by #{song.artist}"
+      print "#{index + 1}. #{song.track} by #{song.artist}"
     end
   end
 end
