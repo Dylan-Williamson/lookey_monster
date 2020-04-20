@@ -2,4 +2,4 @@
 
 require_relative '../lib/lookey_monster'
 
-LookeyMonster::CLI.new.start
+LookeyMonster::CLI.new.call
