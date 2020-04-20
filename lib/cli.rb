@@ -1,4 +1,5 @@
-# require_relative './lookey_monster'
+
+require_relative './lookey_monster'
 
 class LookeyMonster::CLI 
 

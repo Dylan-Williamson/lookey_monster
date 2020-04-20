@@ -1,4 +1,6 @@
 require_relative './lookey_monster/version'
+require 'pry'
+require 'nokogiri'
 require 'httparty'
 require 'colorize'
 require 'open-uri'
