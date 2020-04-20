@@ -1,7 +1,6 @@
 require_relative './lookey_monster'
 
 class LookeyMonster::CLI 
-
   def call
     LookeyMonster::Scraper.make_top_songs
     logo
@@ -40,6 +39,8 @@ class LookeyMonster::CLI
       end
     elsif input == "search"
       LookeyMonster::Scraper.search_scraper
+      print_searched_song
+      binding.pry
     elsif input == "exit"
       exit
     else
@@ -47,6 +48,30 @@ class LookeyMonster::CLI
       print "Care to try again? Enter [list] [search] or [exit]\n\n"
       start
     end
+  end
+  
+
+  def print_top_song(song)
+    logo
+    print "#{song.track} ".light_red
+    print "by".cyan
+    print " #{song.artist}\n".light_red
+    print "Key: ".light_red + "#{song.key}\n\n".cyan
+    print "Tempo: ".light_red + "#{song.tempo} BPM".cyan
+  end
+
+  def print_top_songs
+    print "\nLooKEY Monster's Top 100 List\n\n".light_red
+    LookeyMonster::Song.all.each_with_index do |song, index|
+      print "#{index + 1}.".cyan
+      print " #{song.track} ".light_red
+      print "by".cyan
+      print " #{song.artist}\n".light_red
+    end
+  end
+  
+  def print_searched_song
+    LookeyMonster::Song.all[0]
   end
   
   def menu
@@ -74,25 +99,6 @@ class LookeyMonster::CLI
 ▐█ ▌▐▌▐█· ▄█▀▄ ▐█▐▐▌▄▀▀▀█▄ ▐█.▪▐▀▀▪▄▐▀▀▄ 
 ██ ██▌▐█▌▐█▌.▐▌██▐█▌▐█▄▪▐█ ▐█▌·▐█▄▄▌▐█•█▌
 ▀▀  █▪▀▀▀ ▀█▄▀▪▀▀ █▪ ▀▀▀▀  ▀▀▀  ▀▀▀ .▀  ▀\n\n\n".light_cyan
-  end
-
-  def print_top_song(song)
-    logo
-    print "#{song.track} ".light_red
-    print "by".cyan
-    print " #{song.artist}\n".light_red
-    print "Key: ".light_red + "#{song.key}\n\n".cyan
-    print "Tempo: ".light_red + "#{song.tempo} BPM".cyan
-  end
-
-  def print_top_songs
-    print "\nLooKEY Monster's Top 100 List\n\n".light_red
-    LookeyMonster::Song.all.each_with_index do |song, index|
-      print "#{index + 1}.".cyan
-      print " #{song.track} ".light_red
-      print "by".cyan
-      print " #{song.artist}\n".light_red
-    end
   end
 end
 

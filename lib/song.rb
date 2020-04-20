@@ -9,12 +9,12 @@ class LookeyMonster::Song
 
   @@all = []
   def self.new_from_index_page(song)
-    self.new(
-      track: song.css("div.row.search-track-name").text,
-      artist: song.css('div.row.search-artist-name').text,
-      key: song.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[0],
-      tempo: song.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[3]
-      )
+    self.new{
+      @track = song.css("div.row.search-track-name").text,
+      @artist = song.css('div.row.search-artist-name').text,
+      @key = song.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[0],
+      @tempo = song.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[3]
+    }
   end
   
   def initialize(track=nil, artist=nil, key=nil, tempo=nil, url=nil)
@@ -25,6 +25,21 @@ class LookeyMonster::Song
     @url = url
     @@all << self
   end
+  
+  def self.erase
+    @@all.clear
+  end
+  
+  def self.make_top_songs
+    LookeyMonster::Scraper.scrape_song_index.each do |song|
+      LookeyMonster::Song.new_from_index_page(song)
+    end
+    @@all
+  end
+  
+  # def self.
+    
+  # end
  
 
   def self.all

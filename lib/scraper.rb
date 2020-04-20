@@ -40,7 +40,7 @@ end
     end
     @@songs.each do |song|
       LookeyMonster::Song.new
-      binding.pry
+      # binding.pry
     end
   end
 
