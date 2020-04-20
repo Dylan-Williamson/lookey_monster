@@ -1,51 +1,6 @@
 # require_relative './lookey_monster'
 
 class LookeyMonster::CLI 
-  
-  
-  
-  
-  def logo 
-    "\n\n
-    ▄▄▌              ▄ •▄ ▄▄▄ . ▄· ▄▌    
-    ██•  ▪     ▪     █▌▄▌▪▀▄.▀·▐█▪██▌    
-    ██▪   ▄█▀▄  ▄█▀▄ ▐▀▀▄·▐▀▀▪▄▐█▌▐█▪    
-    ▐█▌▐▌▐█▌.▐▌▐█▌.▐▌▐█.█▌▐█▄▄▌ ▐█▀·.    
-    .▀▀▀  ▀█▄▀▪ ▀█▄▀▪·▀  ▀ ▀▀▀   ▀ •     
-• ▌ ▄ ·.        ▐ ▄ .▄▄ · ▄▄▄▄▄▄▄▄ .▄▄▄  
-·██ ▐███▪▪     •█▌▐█▐█ ▀. •██  ▀▄.▀·▀▄ █·
-▐█ ▌▐▌▐█· ▄█▀▄ ▐█▐▐▌▄▀▀▀█▄ ▐█.▪▐▀▀▪▄▐▀▀▄ 
-██ ██▌▐█▌▐█▌.▐▌██▐█▌▐█▄▪▐█ ▐█▌·▐█▄▄▌▐█•█▌
-▀▀  █▪▀▀▀ ▀█▄▀▪▀▀ █▪ ▀▀▀▀  ▀▀▀  ▀▀▀ .▀  ▀\n\n\n\n".light_cyan
-  end
-  
-  def options
-    print "Would you like to search for another song? (YES or NO)"
-  end
-  def menu
-    print logo
-    print "    Please enter artist & song below:\n\n\n".light_red
-    input = gets.chomp
-  end
-  
-  def goodbye
-    print "\n   Thank you for using LooKey Monster!\n\n\n".light_red
-  end
-  
-  def top_hundred
-    
-  end
-end
-
-LookeyMonster::CLI
-
-
-
-
-
-
-
-class LookeyMonster::CLI
 
   def call
     LookeyMonster::Scraper.new.make_top_songs
@@ -53,7 +8,7 @@ class LookeyMonster::CLI
     print "Welcome to LooKEY Monster!"
     start
   end
-
+  
   def start
     print "Would you like to see the top 100 list or do a custom search?".light_red
     print "Enter [list] or [search]".light_red
@@ -82,12 +37,37 @@ class LookeyMonster::CLI
         start
       end
     elsif input == "search"
-      
+      print "no"
     else 
       puts "\nI'm sorry, could you try that again? Enter [list], [search] or [exit]"
     end
   end
-
+  
+  
+  
+  def logo 
+    "\n\n
+    ▄▄▌              ▄ •▄ ▄▄▄ . ▄· ▄▌    
+    ██•  ▪     ▪     █▌▄▌▪▀▄.▀·▐█▪██▌    
+    ██▪   ▄█▀▄  ▄█▀▄ ▐▀▀▄·▐▀▀▪▄▐█▌▐█▪    
+    ▐█▌▐▌▐█▌.▐▌▐█▌.▐▌▐█.█▌▐█▄▄▌ ▐█▀·.    
+    .▀▀▀  ▀█▄▀▪ ▀█▄▀▪·▀  ▀ ▀▀▀   ▀ •     
+• ▌ ▄ ·.        ▐ ▄ .▄▄ · ▄▄▄▄▄▄▄▄ .▄▄▄  
+·██ ▐███▪▪     •█▌▐█▐█ ▀. •██  ▀▄.▀·▀▄ █·
+▐█ ▌▐▌▐█· ▄█▀▄ ▐█▐▐▌▄▀▀▀█▄ ▐█.▪▐▀▀▪▄▐▀▀▄ 
+██ ██▌▐█▌▐█▌.▐▌██▐█▌▐█▄▪▐█ ▐█▌·▐█▄▄▌▐█•█▌
+▀▀  █▪▀▀▀ ▀█▄▀▪▀▀ █▪ ▀▀▀▀  ▀▀▀  ▀▀▀ .▀  ▀\n\n\n\n".light_cyan
+  end
+  
+  # def options
+  #   print "Would you like to search for another song? (YES or NO)"
+  # end
+  # def menu
+  #   print logo
+  #   print "    Please enter artist & song below:\n\n\n".light_red
+  #   input = gets.chomp
+  # end
+  
   def print_top_song(song)
     print logo
     print "----------- #{song.name} by #{song.track} -----------\n".light_red
@@ -101,5 +81,7 @@ class LookeyMonster::CLI
       puts "#{index + 1}. #{song.track} by #{song.artist}"
     end
   end
-
 end
+
+LookeyMonster::CLI
+
