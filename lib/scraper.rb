@@ -22,5 +22,37 @@ def scraper
   binding.pry
   end
 end
-
 scraper
+
+
+
+
+
+
+
+
+class LookeyMonster::Scraper
+
+    
+  def self.get_top_hun
+    url = "https://www.tunebat.com/"
+    doc = Nokogiri::HTML(open(url))
+    tracks = doc.css("div.row.search-track-name")
+    
+    s_array = []
+
+    LookeyMonster::Song.create_top_hun(song_arr)
+    
+  end
+    
+    def self.get_info(song_obj)
+        url = song_object.url
+        doc = Nokogiri::HTML(open(url))
+        info = doc.css(".table.table-striped.wanted-person-description tbody").text
+        puts info 
+    end
+end
+
+
+LookeyMonster::Scraper
+

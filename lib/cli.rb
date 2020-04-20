@@ -45,6 +45,10 @@ class LookeyMonster::CLI
   def goodbye
     print "\n   Thank you for using LooKey Monster!\n\n\n".light_red
   end
+  
+  def top_hundred
+    
+  end
 end
 
 LookeyMonster::CLI
