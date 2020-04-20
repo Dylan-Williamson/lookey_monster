@@ -3,20 +3,6 @@
 class LookeyMonster::CLI 
   
   
-  def start
-    menu
-    
-    user_input = nil
-    
-    while user_input != nil
-    
-      LookeyMonster::CLI.new.scraper
-      
-      print logo
-      print "Track: #{:track}\nArtist: #{:artist}\nKey: #{:key}\nTempo: #{:tempo}\n\n"
-      print options
-    end
-  end
   
   
   def logo 
@@ -74,6 +60,7 @@ class LookeyMonster::CLI
     input = gets.chomp.downcase
     if input == "list"
       print "\n\nWhich song would you like to see? [1-100]"
+      
       input = gets.strip.to_i
 
       song = LookeyMonster::Song.find(input.to_i)
@@ -108,12 +95,10 @@ class LookeyMonster::CLI
     print "Tempo: ".light_red + "#{song.tempo}".cyan
   end
 
-  def print_top_songs(from_number)
-    puts ""
-    puts "---------- Restaurants #{from_number} - #{from_number+9} ----------"
-    puts ""
-    WorldsBestRestaurants::Restaurant.all[from_number-1, 10].each.with_index(from_number) do |restaurant, index|
-      puts "#{index}. #{restaurant.name} - #{restaurant.location}"
+  def print_top_songs
+    print "\nLooKEY Monster's Top 100 List\n"
+    LookeyMonster::Song.all.each_with_index do |song, index|
+      puts "#{index + 1}. #{song.track} by #{song.artist}"
     end
   end
 
