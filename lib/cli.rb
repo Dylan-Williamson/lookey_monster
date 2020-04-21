@@ -56,7 +56,12 @@ class LookeyMonster::CLI
   end
   
   def print_searched_song
-    LookeyMonster::Song.all.first
+    print "Song: ".light_red
+    print "#{LookeyMonster::Song.all.first.track} by #{LookeyMonster::Song.all.first.artist}\n".cyan
+    print "Key: ".light_red
+    print "#{LookeyMonster::Song.all.first.key}\n".cyan
+    print "Tempo: ".light_red
+    print "#{LookeyMonster::Song.all.first.tempo}".cyan
   end
 
   def print_top_song(song)
