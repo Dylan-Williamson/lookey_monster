@@ -14,10 +14,10 @@ class LookeyMonster::Scraper
     @@songs
   end
   
-  def initialize
-    input = gets.chomp
-    @@input = input
-  end
+  # def initialize
+  #   @@input = gets.chomp
+  #   @@input = input
+  # end
 
   # def determine_url
   #   if @@input == "100" 
@@ -45,6 +45,7 @@ class LookeyMonster::Scraper
   
   
   def scraper
+    @@input = gets.chomp
     if @@input == "100" 
       @@url = "https://tunebat.com/"
     elsif @@input.include?(" ") == true
