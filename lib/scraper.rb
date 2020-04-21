@@ -19,8 +19,14 @@ class LookeyMonster::Scraper
     parsed_page = Nokogiri::HTML(open(url))
   end
 
-  def scrape_restaurants_index
-     self.get_page.css("div[data-list='1-50'] a.item")
+  def scrape_songs
+     self.get_page.css("div.search-info-container")
+  end
+  
+  def make_songs
+    scrape_songs.each do |s|
+      LookeyMonster::Song.new_from_index_page(s)
+    end
   end
   
   def determine_url
