@@ -10,8 +10,12 @@ class LookeyMonster::Song
 
   attr_accessor :track, :artist, :key, :tempo, :url
   
-  def initialize(song_hash)
-    
+  def initialize(track=nil, artist=nil, key=nil, tempo=nil, url=nil)
+    @track = track
+    @artist = artist
+    @key = key 
+    @tempo = tempo
+    @url = url
     @@all << self
   end
     
