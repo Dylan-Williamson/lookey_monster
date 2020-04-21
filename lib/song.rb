@@ -12,6 +12,7 @@ class LookeyMonster::Song
   
   def initialize(song_hash)
     
+    @@all << self
   end
     
   def self.save
@@ -20,6 +21,10 @@ class LookeyMonster::Song
 
   def self.all
     @@all
+  end
+  
+  def self.reset_all
+    @@all.clear
   end
 end
 
