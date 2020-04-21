@@ -17,7 +17,7 @@ class LookeyMonster::Scraper
   end
   
   def get_page
-    parsed_page = Nokogiri::HTML(open(url))
+    parsed_page = Nokogiri::HTML(open(@@url))
   end
 
   def scrape_songs
@@ -32,11 +32,11 @@ class LookeyMonster::Scraper
   
   def determine_url
     if input == "100" 
-      url = "https://tunebat.com/"
+      @@url = "https://tunebat.com/"
     elsif input.include?(" ") == true
-      url = "https://tunebat.com/Search?q=" + input.downcase.gsub!(" ","+")
+      @@url = "https://tunebat.com/Search?q=" + input.downcase.gsub!(" ","+")
     else 
-      url = "https://tunebat.com/Search?q=" + input.downcase
+      @@url = "https://tunebat.com/Search?q=" + input.downcase
     end
   end
   
