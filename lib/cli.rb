@@ -43,6 +43,7 @@ class LookeyMonster::CLI
         start
       end
     elsif input == "search"
+      print logo
       LookeyMonster::Scraper.new.scraper
       print_searched_song
       binding.pry
@@ -57,7 +58,9 @@ class LookeyMonster::CLI
   
   def print_searched_song
     print "Song: ".light_red
-    print "#{LookeyMonster::Song.all.first.track} by #{LookeyMonster::Song.all.first.artist}\n".cyan
+    print "#{LookeyMonster::Song.all.first.track} ".cyan
+    print "by".light_red
+    print " #{LookeyMonster::Song.all.first.artist}\n".cyan
     print "Key: ".light_red
     print "#{LookeyMonster::Song.all.first.key}\n".cyan
     print "Tempo: ".light_red
