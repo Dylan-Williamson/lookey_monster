@@ -6,13 +6,14 @@ require_relative './lookey_monster.rb'
 require_relative './song.rb'
 
 class LookeyMonster::Scraper
+
+  @@songs = []
   
   def songs
     @@songs
   end
   
   def initialize
-    @@songs = []
   end
   
   def get_page
@@ -60,6 +61,7 @@ class LookeyMonster::Scraper
       LookeyMonster::Song.all << song
     binding.pry
     end
+    @@songs.clear
   end
 
 end
