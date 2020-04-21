@@ -6,11 +6,9 @@ require 'colorize'
 
 class LookeyMonster::CLI 
   def call
-    LookeyMonster::Scraper.create_top_hash
-    LookeyMonster::Scraper.top
-    # logo
-    # print "       WELCOME TO LOOKEY MONSTER!\n\n"
-    # start
+    logo
+    print "       WELCOME TO LOOKEY MONSTER!\n\n"
+    start
   end
   
   def start
