@@ -44,7 +44,7 @@ class LookeyMonster::CLI
       end
     elsif input == "search"
       print logo
-      print "Enter track and artist below\n"
+      print "Enter track and artist below\n\n"
       LookeyMonster::Scraper.new.scraper
       print_searched_song
       # binding.pry
