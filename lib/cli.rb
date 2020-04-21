@@ -17,11 +17,15 @@ class LookeyMonster::CLI
     menu
     input = gets.chomp.downcase
     if input == "list"
+      LookeyMonster::Scraper.new.scraper
       print "\n\n\n\n\n"
-      logo
+      print logo
       print "Which song would you like to see? [1-100]\n\n"
       print_top_songs
+      print "Enter track and artist below\n\n"
+      print_top_songs
       
+      # binding.pry
       input = gets.strip.to_i
 
       song = LookeyMonster::Song.find(input.to_i)

@@ -46,7 +46,7 @@ class LookeyMonster::Scraper
   
   def scraper
     @@input = gets.chomp
-    if @@input == "100" 
+    if @@input == "list" 
       @@url = "https://tunebat.com/"
     elsif @@input.include?(" ") == true
       @@url = "https://tunebat.com/Search?q=" + @@input.downcase.gsub!(" ","+")
