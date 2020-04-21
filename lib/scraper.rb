@@ -15,25 +15,6 @@ class LookeyMonster::Scraper
     @@songs = []
   end
   
-  # def top_scraper
-  #   input = gets.chomp
-    
-  #   url = "https://tunebat.com/"
-  #   html = HTTParty.get(url)
-  #   parsed_page = Nokogiri::HTML(html)
-  #   song_listings = parsed_page.css('div.searchResultNode')
-  #   song_listings.each do |song_listing|
-  #     song = {
-  #       track: song_listing.css('div.row.search-track-name').text,
-  #       artist: song_listing.css('div.row.search-artist-name').text,
-  #       key: song_listing.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[0],
-  #       tempo: song_listing.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[3] + " BPM",
-  #     }
-  #     @@songs << song
-  #   binding.pry
-  #   end
-  # end
-  
   def scraper
     
     input = ""
@@ -66,6 +47,6 @@ end
 
 
 
-LookeyMonster::Scraper.new.scraper
+# LookeyMonster::Scraper.new.scraper
 
  
