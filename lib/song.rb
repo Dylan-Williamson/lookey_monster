@@ -16,6 +16,11 @@ class LookeyMonster::Song
     @key = key 
     @tempo = tempo
     @url = url
+    self.track = track if track
+    self.artist = artist if artist
+    self.key = key if key
+    self.tempo = tempo if tempo
+    self. url = url if url
     @@all << self
   end
   

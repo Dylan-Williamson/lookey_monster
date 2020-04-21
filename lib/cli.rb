@@ -7,8 +7,8 @@ require 'colorize'
 class LookeyMonster::CLI 
   def call
     LookeyMonster::Scraper.new.scraper
-    binding.pry
     # LookeyMonster::Scraper.new.make_songs
+    binding.pry
     # logo
     # print "       WELCOME TO LOOKEY MONSTER!\n\n"
     # start
