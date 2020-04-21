@@ -20,10 +20,8 @@ class LookeyMonster::CLI
       LookeyMonster::Scraper.new.scraper
       print "\n\n\n\n\n"
       print logo
+      print_top_songs
       print "Which song would you like to see? [1-100]\n\n"
-      print_top_songs
-      print "Enter track and artist below\n\n"
-      print_top_songs
       
       # binding.pry
       input = gets.strip.to_i
@@ -48,7 +46,9 @@ class LookeyMonster::CLI
       end
     elsif input == "search"
       print logo
-      print "Enter track and artist below\n\n"
+      print "------".cyan
+      print "Enter track and artist below".light_red
+      print "-----\n\n".cyan
       LookeyMonster::Scraper.new.scraper
       print_searched_song
       # binding.pry
@@ -62,6 +62,7 @@ class LookeyMonster::CLI
   end
   
   def print_searched_song
+    print "\n\n\n\n\n\n"
     print logo
     print "Song: ".light_red
     print "#{LookeyMonster::Song.all.first.track} ".cyan
@@ -74,6 +75,7 @@ class LookeyMonster::CLI
   end
 
   def print_top_song(song)
+    print "\n\n\n\n\n\n"
     logo
     print "#{song.track} ".light_red
     print "by".cyan
