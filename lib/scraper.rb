@@ -64,6 +64,7 @@ class LookeyMonster::Scraper
     # binding.pry
     end
     @@songs.clear
+    LookeyMonster::Scraper.new.make_songs
   end
 
 end

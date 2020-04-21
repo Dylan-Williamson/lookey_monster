@@ -6,16 +6,16 @@ require 'colorize'
 
 class LookeyMonster::CLI 
   def call
-    LookeyMonster::Scraper.new.scraper
-    LookeyMonster::Scraper.new.make_songs
-    binding.pry
-    # logo
-    # print "       WELCOME TO LOOKEY MONSTER!\n\n"
-    # start
+    # LookeyMonster::Scraper.new.make_songs
+    # binding.pry
+    logo
+    print "       WELCOME TO LOOKEY MONSTER!\n\n"
+    start
   end
   
   def start
     menu
+    LookeyMonster::Scraper.new.scraper
     input = gets.chomp.downcase
     if input == "list"
       print "\n\n\n\n\n"
