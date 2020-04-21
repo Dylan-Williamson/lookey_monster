@@ -6,10 +6,11 @@ require 'colorize'
 
 class LookeyMonster::CLI 
   def call
-    LookeyMonster::Scraper.make_top_songs
-    logo
-    print "       WELCOME TO LOOKEY MONSTER!\n\n"
-    start
+    LookeyMonster::Scraper.create_top_hash
+    LookeyMonster::Scraper.top
+    # logo
+    # print "       WELCOME TO LOOKEY MONSTER!\n\n"
+    # start
   end
   
   def start
@@ -73,10 +74,7 @@ class LookeyMonster::CLI
       print " #{song.artist}\n".light_red
     end
   end
-  
-  def print_searched_song
-    LookeyMonster::Song.all.last
-  end
+
   
   def menu
     print "--------------".cyan
@@ -110,40 +108,3 @@ LookeyMonster::CLI
 
 
 
-
-
-
-
-
-
-# class LookeyMonster::CLI
-  
-#   BASE_PATH = "https://tunebat.com/"
-
-#   def self.run
-#     make_top_songs
-#     add_song_attributes
-#     display_top_songs
-#   end
-
-#   def self.make_top_songs
-#     songs_array = LookeyMonster::Scraper.scrape_index_page(BASE_PATH)
-#     LookeyMonster::Song.create_from_collection(songs_array)
-#   end
-
-#   def self.add_song_attributes
-#     LookeyMonster::Song.all.each do |song|
-#       attributes = Scraper.scrape_profile_page(BASE_PATH + song.song_info_url)
-#       student.add_student_attributes(attributes)
-#     end
-#   end
-
-#   def self.display_top_songs
-#     LookeyMonster::Song.all.each do |song|
-#       puts "#{song.track.upcase}".colorize(:blue)
-#       puts " #{song.artist}".colorize(:blue)
-#       puts "----------------------".colorize(:green)
-#     end
-#   end
-# binding.pry
-# end
