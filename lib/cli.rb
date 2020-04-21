@@ -4,7 +4,7 @@ require_relative "../lib/song.rb"
 require 'nokogiri'
 require 'colorize'
 
-class CommandLineInterface
+class LookeyMonster::CLI
   BASE_PATH = "https://learn-co-curriculum.github.io/student-scraper-test-page/"
 
   def run
