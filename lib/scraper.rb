@@ -21,7 +21,7 @@ class LookeyMonster::Scraper
     input = gets.chomp
     
     if input == "100" 
-      url = "https://tunebat.com/" + 
+      url = "https://tunebat.com/"
     elsif input.include?(" ") == true
       url = "https://tunebat.com/Search?q=" + input.downcase.gsub!(" ","+")
     else 
@@ -39,6 +39,7 @@ class LookeyMonster::Scraper
         # url: song_listing.css('a.href').text
       }
       @@songs << song
+      LookeyMonster::Song.all << song
     binding.pry
     end
   end
