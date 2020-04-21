@@ -9,15 +9,18 @@ class LookeyMonster::Scraper
 
   @@songs = []
   
+  
   def songs
     @@songs
   end
   
   def initialize
+    input = gets.chomp
+    @@input = input
   end
   
   def get_page
-    parsed_page = Nokogiri::HTML(open(@@url))
+    @@parsed_page = Nokogiri::HTML(open(@@url))
   end
 
   def scrape_songs
@@ -31,24 +34,22 @@ class LookeyMonster::Scraper
   end
   
   def determine_url
-    if input == "100" 
+    if @@input == "100" 
       @@url = "https://tunebat.com/"
-    elsif input.include?(" ") == true
-      @@url = "https://tunebat.com/Search?q=" + input.downcase.gsub!(" ","+")
+    elsif @@input.include?(" ") == true
+      @@url = "https://tunebat.com/Search?q=" + @@input.downcase.gsub!(" ","+")
     else 
-      @@url = "https://tunebat.com/Search?q=" + input.downcase
+      @@url = "https://tunebat.com/Search?q=" + @@input.downcase
     end
   end
   
   def scraper
     
-    input = ""
-    input = gets.chomp
     determine_url
     get_page
     # html = HTTParty.get(url)
     # parsed_page = Nokogiri::HTML(html)
-    song_listings = parsed_page.css('div.search-info-container')
+    song_listings = @@parsed_page.css('div.search-info-container')
     song_listings.each do |song_listing|
       song = {
         track: song_listing.css('div.row.search-track-name').text,
