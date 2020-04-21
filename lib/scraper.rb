@@ -19,15 +19,15 @@ class LookeyMonster::Scraper
     @@input = input
   end
 
-  def determine_url
-    if @@input == "100" 
-      @@url = "https://tunebat.com/"
-    elsif @@input.include?(" ") == true
-      @@url = "https://tunebat.com/Search?q=" + @@input.downcase.gsub!(" ","+")
-    else 
-      @@url = "https://tunebat.com/Search?q=" + @@input.downcase
-    end
-  end
+  # def determine_url
+  #   if @@input == "100" 
+  #     @@url = "https://tunebat.com/"
+  #   elsif @@input.include?(" ") == true
+  #     @@url = "https://tunebat.com/Search?q=" + @@input.downcase.gsub!(" ","+")
+  #   else 
+  #     @@url = "https://tunebat.com/Search?q=" + @@input.downcase
+  #   end
+  # end
   
   def get_page
     @@parsed_page = Nokogiri::HTML(open(@@url))
@@ -46,7 +46,13 @@ class LookeyMonster::Scraper
   
   def scraper
     
-    determine_url
+    if @@input == "100" 
+      @@url = "https://tunebat.com/"
+    elsif @@input.include?(" ") == true
+      @@url = "https://tunebat.com/Search?q=" + @@input.downcase.gsub!(" ","+")
+    else 
+      @@url = "https://tunebat.com/Search?q=" + @@input.downcase
+    end
     get_page
     # html = HTTParty.get(url)
     # parsed_page = Nokogiri::HTML(html)
