@@ -51,13 +51,14 @@ class LookeyMonster::CLI
       print "------\n\n\n".cyan
       LookeyMonster::Scraper.new.scraper
       print_searched_song
-      if gets.chomp.downcase == "y"
-        input == "search"
-      elsif gets.chomp.downcase =="n"
-        exit
-      else
-        "What was that? Enter Yes[y] or No[n].\n".light_red
-      end
+      # if gets.chomp.downcase == "y"
+      #   input == "search"
+      # elsif gets.chomp.downcase =="n"
+      #   exit
+      #   exit
+      # else
+      #   "What was that? Enter Yes[y] or No[n].\n".light_red
+      # end
       # binding.pry
     elsif input == "exit"
       exit
@@ -80,7 +81,14 @@ class LookeyMonster::CLI
     print "Tempo: ".light_red
     print "#{LookeyMonster::Song.all.first.tempo}\n\n\n\n".cyan
     print "Want to search for another song? \n".light_red
-    print "Yes[y] or No[n]?".cyan
+    print "Yes[y] or No[n]?\n".cyan
+    if input.chomp.downcase == "n"
+      exit
+    elsif input.chomp.downcase == "y"
+      start
+    else
+      print "What was that?"
+    end
   end
 
   def print_top_song(song)
