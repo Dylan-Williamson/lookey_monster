@@ -60,7 +60,7 @@ class LookeyMonster::Scraper
         # url: song_listing.css('a.href').text
       }
       @@songs << song
-      LookeyMonster::Song.all << song
+      LookeyMonster::Song.songs << song
     # binding.pry
     end
     @@songs.clear
