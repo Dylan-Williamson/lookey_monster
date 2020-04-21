@@ -45,6 +45,7 @@ class LookeyMonster::Scraper
   
   
   def scraper
+    LookeyMonster::Song.reset_all
     @@input = gets.chomp
     if @@input == "list" 
       @@url = "https://tunebat.com/"
