@@ -1,46 +1,45 @@
 require_relative './lookey_monster'
+require_relative "../lib/scraper.rb"
+require_relative "../lib/song.rb"
+require 'nokogiri'
+require 'colorize'
 
-class LookeyMonster::CLI
+class CommandLineInterface
+  BASE_PATH = "https://learn-co-curriculum.github.io/student-scraper-test-page/"
 
-  def call
-    list_deals
-    menu
-    goodbye
+  def run
+    make_students
+    add_attributes_to_students
+    display_students
   end
 
-  def list_deals
-    # here doc - http://blog.jayfields.com/2006/12/ruby-multiline-strings-here-doc-or.html
-    puts "Today's Daily Deals:"
-    @deals = DailyDeal::Deal.today
-    @deals.each.with_index(1) do |deal, i|
-      puts "#{i}. #{deal.name} - #{deal.price} - #{deal.availability}"
+  def make_students
+    students_array = Scraper.scrape_index_page(BASE_PATH + 'index.html')
+    Student.create_from_collection(students_array)
+  end
+
+  def add_attributes_to_students
+    Student.all.each do |student|
+      attributes = Scraper.scrape_profile_page(BASE_PATH + student.profile_url)
+      student.add_student_attributes(attributes)
     end
   end
 
-  def menu
-    input = nil
-    while input != "exit"
-      puts "Enter the number of the deal you'd like more info on or type list to see the deals again or type exit:"
-      input = gets.strip.downcase
-
-      if input.to_i > 0
-        the_deal = @deals[input.to_i-1]
-        puts "#{the_deal.name} - #{the_deal.price} - #{the_deal.availability}"
-      elsif input == "list"
-        list_deals
-      else
-        puts "Not sure what you want, type list or exit."
-      end
+  def display_students
+    Student.all.each do |student|
+      puts "#{student.name.upcase}".colorize(:blue)
+      puts "  location:".colorize(:light_blue) + " #{student.location}"
+      puts "  profile quote:".colorize(:light_blue) + " #{student.profile_quote}"
+      puts "  bio:".colorize(:light_blue) + " #{student.bio}"
+      puts "  twitter:".colorize(:light_blue) + " #{student.twitter}"
+      puts "  linkedin:".colorize(:light_blue) + " #{student.linkedin}"
+      puts "  github:".colorize(:light_blue) + " #{student.github}"
+      puts "  blog:".colorize(:light_blue) + " #{student.blog}"
+      puts "----------------------".colorize(:green)
     end
   end
 
-  def goodbye
-    puts "See you tomorrow for more deals!!!"
-  end
 end
-
-
-
 
 
 
