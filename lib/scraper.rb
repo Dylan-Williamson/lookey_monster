@@ -15,11 +15,15 @@ class LookeyMonster::Scraper
     @@songs = []
   end
   
-  def scraper
-    
-    input = ""
-    input = gets.chomp
-    
+  def get_page
+    Nokogiri::HTML(open(url))
+  end
+
+  def scrape_restaurants_index
+     self.get_page.css("div[data-list='1-50'] a.item")
+  end
+  
+  def determine_url
     if input == "100" 
       url = "https://tunebat.com/"
     elsif input.include?(" ") == true
@@ -27,6 +31,13 @@ class LookeyMonster::Scraper
     else 
       url = "https://tunebat.com/Search?q=" + input.downcase
     end
+  end
+  
+  def scraper
+    
+    input = ""
+    input = gets.chomp
+    determine_url
     html = HTTParty.get(url)
     parsed_page = Nokogiri::HTML(html)
     song_listings = parsed_page.css('div.search-info-container')
