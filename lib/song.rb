@@ -6,6 +6,7 @@ require 'httparty'
 
 class LookeyMonster::Song
   
+  @@songs = []
   @@all = []
 
   attr_accessor :track, :artist, :key, :tempo, :url
@@ -34,6 +35,10 @@ class LookeyMonster::Song
   end
   def self.save
     @@all << self
+  end
+  
+  def self.song_hash
+    @@songs
   end
 
   def self.all
