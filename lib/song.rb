@@ -18,7 +18,15 @@ class LookeyMonster::Song
     @url = url
     @@all << self
   end
-    
+  
+  def self.new_from_index_page(s)
+    self.new(
+    s.css('div.row.search-track-name').text,
+    s.css('div.row.search-artist-name').text,
+    s.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[0],
+    s.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[3] + " BPM",
+    )
+  end
   def self.save
     @@all << self
   end
