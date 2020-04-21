@@ -5,7 +5,6 @@ require 'open-uri'
 require 'httparty'
 
 class LookeyMonster::Song
-class Song
 
   attr_accessor :track, :artist, :key, :tempo, :url
 
