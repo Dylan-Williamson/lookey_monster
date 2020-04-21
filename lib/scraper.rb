@@ -7,7 +7,12 @@ require_relative './song.rb'
 
 class LookeyMonster::Scraper
   
-  def scraper
+  def top_scraper
+    url = "https://tunebat.com/"
+    html = HTTParty.get(url)
+  end
+  
+  def search_scraper
     @@songs = []
     input = ""
     input = gets.chomp
@@ -31,6 +36,6 @@ end
 
 
 
-LookeyMonster::Scraper.new.scraper
+LookeyMonster::Scraper.new.search_scraper
 
  
