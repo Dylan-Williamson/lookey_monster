@@ -33,6 +33,11 @@ class LookeyMonster::Song
     s.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[3] + " BPM",
     )
   end
+  
+  def self.find(id)
+    self.all[id-1]
+  end
+  
   def self.save
     @@all << self
   end
