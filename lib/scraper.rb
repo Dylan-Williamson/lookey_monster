@@ -43,6 +43,7 @@ class LookeyMonster::Scraper
     # html = HTTParty.get(url)
     # parsed_page = Nokogiri::HTML(html)
     song_listings = @@parsed_page.css('div.searchResultList.row.main-row')
+    binding.pry
     song_listings.each do |song_listing|
       song = {
         track: song_listing.css('div.row.search-track-name').text,
