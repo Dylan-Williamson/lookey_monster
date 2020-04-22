@@ -4,7 +4,7 @@ require_relative "../lib/song.rb"
 require 'nokogiri'
 require 'colorize'
 
-class LookeyMonster::CLI 
+class LookeyMonster::CLI
   def call
     # LookeyMonster::Scraper.new.make_songs
     # binding.pry
@@ -82,12 +82,16 @@ class LookeyMonster::CLI
     print "#{LookeyMonster::Song.all.first.tempo}\n\n\n\n".cyan
     print "Want to search for another song? \n".light_red
     print "Yes[y] or No[n]?\n".cyan
-    if input.chomp.downcase == "n"
+    input = gets.chomp.downcase
+    if input == "n"
+      print "\n\n\n\n\n\n\n"
+      print logo
+      print "Thank you for using LooKEY Monster!".light_red
       exit
-    elsif input.chomp.downcase == "y"
-      start
+    elsif input == "y"
+      LookeyMonster::CLI.new.start 
     else
-      print "What was that?"
+      print "What was that?".times_do
     end
   end
 
