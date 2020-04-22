@@ -89,11 +89,19 @@ class LookeyMonster::CLI
     elsif input == "y"
       LookeyMonster::CLI.new.start 
     else
-      print "What was that? Please enter Yes[y] or No[n]"
+      print logo
+      print "What was that? Please enter Yes[y] or No[n]\n\n".cyan
+      print "Another invalid response will cause you to exit\n\n".light_red
       input = gets.chomp.downcase
       if input == "n"
         print goodbye
         exit
+      elsif input == "y"
+        LookeyMonster::CLI.new.start
+      else
+        print goodbye
+        exit
+      end
     end
   end
 
@@ -120,7 +128,7 @@ class LookeyMonster::CLI
   def goodbye
     print "\n\n\n\n\n\n\n"
     print logo
-    print "Thank you for using LooKEY Monster!".light_red
+    print "Thank you for using LooKEY Monster!\n\n".light_red
   end
 
   
