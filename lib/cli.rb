@@ -20,7 +20,7 @@ class LookeyMonster::CLI
       LookeyMonster::Scraper.new.scraper
       print "\n\n\n\n\n"
       print logo
-      song = LookeyMonster::Song.find(input.to_i)
+      s = LookeyMonster::Song.find(input.to_i)
       print_top_songs
       print "Which song would you like to see? [1-100]\n\n"
       
@@ -28,7 +28,7 @@ class LookeyMonster::CLI
       input = gets.strip
 
 
-      print_top_song(song)
+      print_top_song(s)
 
       print "\n\nWould you like to view another song? Yes[y] or No[n]\n\n"
 
@@ -107,14 +107,14 @@ class LookeyMonster::CLI
     end
   end
 
-  def print_top_song(song)
+  def print_top_song(s)
     print "\n\n\n\n\n\n"
     logo
-    print "#{song.track} ".light_red
+    print "#{s.track} ".light_red
     print "by".cyan
-    print " #{song.artist}\n".light_red
-    print "Key: ".light_red + "#{song.key}\n\n".cyan
-    print "Tempo: ".light_red + "#{song.tempo} BPM".cyan
+    print " #{s.artist}\n".light_red
+    print "Key: ".light_red + "#{s.key}\n\n".cyan
+    print "Tempo: ".light_red + "#{s.tempo} BPM".cyan
   end
 
   def print_top_songs
