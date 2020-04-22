@@ -20,13 +20,13 @@ class LookeyMonster::CLI
       LookeyMonster::Scraper.new.scraper
       print "\n\n\n\n\n"
       print logo
+      song = LookeyMonster::Song.find(input.to_i)
       print_top_songs
       print "Which song would you like to see? [1-100]\n\n"
       
       # binding.pry
       input = gets.strip
 
-      song = LookeyMonster::Song.find(input.to_i)
 
       print_top_song(song)
 
@@ -107,16 +107,6 @@ class LookeyMonster::CLI
     end
   end
 
-  def print_top_songs
-    print "\nLooKEY Monster's Top 100 List\n\n".light_red
-    LookeyMonster::Song.all.each_with_index do |song, index|
-      print "#{index + 1}.".cyan
-      print " #{song.track} ".light_red
-      print "by".cyan
-      print " #{song.artist}\n".light_red
-    end
-  end
-
   def print_top_song(song)
     print "\n\n\n\n\n\n"
     logo
@@ -125,6 +115,16 @@ class LookeyMonster::CLI
     print " #{song.artist}\n".light_red
     print "Key: ".light_red + "#{song.key}\n\n".cyan
     print "Tempo: ".light_red + "#{song.tempo} BPM".cyan
+  end
+
+  def print_top_songs
+    print "\nLooKEY Monster's Top 100 List\n\n".light_red
+    LookeyMonster::Song.all.each_with_index do |song, index|
+      print "#{index + 1}.".cyan
+      print " #{song.track} ".light_red
+      print "by".cyan
+      print " #{song.artist}\n".light_red
+    end
   end
   
   def menu
@@ -137,6 +137,8 @@ class LookeyMonster::CLI
     print "--------------\n\n".cyan
     print "             Enter [search]\n\n"
   end
+  
+  
   
   def logo 
     print "\n\n
@@ -157,7 +159,6 @@ class LookeyMonster::CLI
     print logo
     print "Thank you for using LooKEY Monster!\n\n".light_red
   end
-  
 end
 
 LookeyMonster::CLI
