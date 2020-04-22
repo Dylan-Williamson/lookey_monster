@@ -87,16 +87,18 @@ class LookeyMonster::CLI
       print goodbye
       exit
     elsif input == "y"
+      print logo
       LookeyMonster::CLI.new.start 
     else
       print logo
-      print "What was that? Please enter Yes[y] or No[n]\n\n".cyan
-      print "Another invalid response will cause you to exit\n\n".light_red
+      print "What was that? Please enter Yes[y] or No[n]\n\n".light_red
+      print "Another invalid response will cause you to exit\n\n".cyan
       input = gets.chomp.downcase
       if input == "n"
         print goodbye
         exit
       elsif input == "y"
+      print logo
         LookeyMonster::CLI.new.start
       else
         print goodbye
