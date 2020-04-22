@@ -14,21 +14,6 @@ class LookeyMonster::Scraper
     @@songs
   end
   
-  # def initialize
-  #   @@input = gets.chomp
-  #   @@input = input
-  # end
-
-  # def determine_url
-  #   if @@input == "100" 
-  #     @@url = "https://tunebat.com/"
-  #   elsif @@input.include?(" ") == true
-  #     @@url = "https://tunebat.com/Search?q=" + @@input.downcase.gsub!(" ","+")
-  #   else 
-  #     @@url = "https://tunebat.com/Search?q=" + @@input.downcase
-  #   end
-  # end
-  
   def get_page
     @@parsed_page = Nokogiri::HTML(open(@@url))
   end
@@ -57,7 +42,7 @@ class LookeyMonster::Scraper
     get_page
     # html = HTTParty.get(url)
     # parsed_page = Nokogiri::HTML(html)
-    song_listings = @@parsed_page.css('div.search-info-container')
+    song_listings = @@parsed_page.css('div.searchResultList row main-row')
     song_listings.each do |song_listing|
       song = {
         track: song_listing.css('div.row.search-track-name').text,
