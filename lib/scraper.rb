@@ -40,10 +40,8 @@ class LookeyMonster::Scraper
       @@url = "https://tunebat.com/Search?q=" + @@input.downcase
     end
     get_page
-    # html = HTTParty.get(url)
-    # parsed_page = Nokogiri::HTML(html)
     song_listings = @@parsed_page.css('div.searchResultList.row.main-row')
-    binding.pry
+    # binding.pry
     song_listings.each do |song_listing|
       song = {
         track: song_listing.css('div.row.search-track-name').text,
