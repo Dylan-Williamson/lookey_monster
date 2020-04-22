@@ -44,13 +44,12 @@ class LookeyMonster::Scraper
     # parsed_page = Nokogiri::HTML(html)
     song_listings = @@parsed_page.css('div.searchResultList.row.main-row')
     song_listings.each do |song_listing|
-        # binding.pry
       song = {
         track: song_listing.css('div.row.search-track-name').text,
         artist: song_listing.css('div.row.search-artist-name').text,
         key: song_listing.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[0],
         tempo: song_listing.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[3] + "BPM",
-        # url: song_listing.css('a.href').text
+        url: song_listing.css('a.href').text
       }
       @@songs << song
       LookeyMonster::Song.song_hash << song
