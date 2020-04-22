@@ -84,14 +84,16 @@ class LookeyMonster::CLI
     print "Yes[y] or No[n]?\n".cyan
     input = gets.chomp.downcase
     if input == "n"
-      print "\n\n\n\n\n\n\n"
-      print logo
-      print "Thank you for using LooKEY Monster!".light_red
+      print goodbye
       exit
     elsif input == "y"
       LookeyMonster::CLI.new.start 
     else
-      print "What was that?".times_do
+      print "What was that? Please enter Yes[y] or No[n]"
+      input = gets.chomp.downcase
+      if input == "n"
+        print goodbye
+        exit
     end
   end
 
@@ -113,6 +115,12 @@ class LookeyMonster::CLI
       print "by".cyan
       print " #{song.artist}\n".light_red
     end
+  end
+  
+  def goodbye
+    print "\n\n\n\n\n\n\n"
+    print logo
+    print "Thank you for using LooKEY Monster!".light_red
   end
 
   
