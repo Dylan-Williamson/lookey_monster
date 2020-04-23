@@ -33,7 +33,7 @@ class LookeyMonster::Scraper
     LookeyMonster::Song.reset_all
     @@input = gets.chomp
     if @@input == "list" 
-      @@url = "https://tunebat.com/"
+      @@url = "https://tunebat.com/Index/GetFeaturedTracks"
     elsif @@input.include?(" ") == true
       @@url = "https://tunebat.com/Search?q=" + @@input.downcase.gsub!(" ","+")
     else 
@@ -41,14 +41,16 @@ class LookeyMonster::Scraper
     end
     get_page
     song_listings = @@parsed_page.css('div.searchResultList.row.main-row')
+    "https://tunebat.com/Index/GetFeaturedTracks"
     binding.pry
+    
     song_listings.each do |song_listing|
       song = {
         track: song_listing.css('div.row.search-track-name').text,
         artist: song_listing.css('div.row.search-artist-name').text,
         key: song_listing.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[0],
         tempo: song_listing.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[3] + "BPM",
-        url: song_listing.css('a.href').text
+        url: song_listing.css('a["href"]').text
       }
       
       @@songs << song
