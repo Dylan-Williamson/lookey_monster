@@ -6,8 +6,6 @@ require 'colorize'
 
 class LookeyMonster::CLI
   def call
-    # LookeyMonster::Scraper.new.make_songs
-    # binding.pry
     logo
     print "       WELCOME TO LOOKEY MONSTER!\n\n"
     start
@@ -24,9 +22,7 @@ class LookeyMonster::CLI
       print_top_songs
       print "Which song would you like to see? [1-100]\n\n"
       
-      # binding.pry
       input = gets.strip
-
 
       print_top_song(s)
 
@@ -51,15 +47,6 @@ class LookeyMonster::CLI
       print "------\n\n\n".cyan
       LookeyMonster::Scraper.new.scraper
       print_searched_song
-      # if gets.chomp.downcase == "y"
-      #   input == "search"
-      # elsif gets.chomp.downcase =="n"
-      #   exit
-      #   exit
-      # else
-      #   "What was that? Enter Yes[y] or No[n].\n".light_red
-      # end
-      # binding.pry
     elsif input == "exit"
       exit
     else
@@ -79,7 +66,9 @@ class LookeyMonster::CLI
     print "Key: ".light_red
     print "#{LookeyMonster::Song.all.first.key}\n\n".cyan
     print "Tempo: ".light_red
-    print "#{LookeyMonster::Song.all.first.tempo}\n\n\n\n".cyan
+    print "#{LookeyMonster::Song.all.first.tempo}\n\n".cyan
+    print "Url: ".light_red
+    print "#{LookeyMonster::Song.all.first.url}\n\n\n".cyan
     print "Want to search for another song? \n".light_red
     print "Yes[y] or No[n]?\n".cyan
     input = gets.chomp.downcase

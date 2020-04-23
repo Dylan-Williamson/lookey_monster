@@ -31,6 +31,7 @@ class LookeyMonster::Song
     s.css('div.row.search-artist-name').text,
     s.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[0],
     s.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[3] + " BPM",
+    s.css('a.href').text
     )
   end
   

@@ -19,7 +19,7 @@ class LookeyMonster::Scraper
   end
 
   def scrape_songs
-     self.get_page.css("div.search-info-container")
+     self.get_page.css("div.searchResultNode.col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2.col-xs-12")
   end
   
   def make_songs
@@ -48,7 +48,7 @@ class LookeyMonster::Scraper
         artist: song_listing.css('div.row.search-artist-name').text,
         key: song_listing.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[0],
         tempo: song_listing.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[3] + "BPM",
-        # url: song_listing.css('a.href').text
+        url: song_listing.css('a.href').text
       }
       
       @@songs << song
