@@ -15,7 +15,7 @@ class LookeyMonster::CLI
     menu
     input = gets.chomp.downcase
     if input == "list"
-      LookeyMonster::Scraper.scraper
+      LookeyMonster::Scraper.top_scraper
       print "\n\n\n\n\n"
       print logo
       s = LookeyMonster::Song.find(input.to_i)

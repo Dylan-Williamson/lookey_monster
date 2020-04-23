@@ -21,16 +21,26 @@ class LookeyMonster::Scraper
     end
   end
   
+  def self.top_scraper
+      url = "https://tunebat.com/Index/GetFeaturedTracks"
+      response = HTTParty.get(url)
+      response.parsed_response
+      binding.pry
+  end
+  
   
   def self.scraper
     LookeyMonster::Song.reset_all
     input = gets.chomp
-    if input == "list" 
-      @@url = "https://tunebat.com/Index/GetFeaturedTracks"
-    elsif input.include?(" ") == true
+    # if input == "list" 
+    #   @@url = "https://tunebat.com/Index/GetFeaturedTracks"
+    #   response = HTTParty.get(@@url)
+    #   response.parsed_response
+    #   binding.pry
+    if input.include?(" ") == true
       @@url = "https://tunebat.com/Search?q=" + input.downcase.gsub!(" ","+")
     else 
-     @@url = "https://tunebat.com/Search?q=" + input.downcase
+      @@url = "https://tunebat.com/Search?q=" + input.downcase
     end
     LookeyMonster::Scraper.get_page
     song_listings = @@parsed_page.css('div.searchResultList.row.main-row')
