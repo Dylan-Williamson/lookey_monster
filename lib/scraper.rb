@@ -14,13 +14,6 @@ class LookeyMonster::Scraper
     @@songs
   end
   
-  def self.get_page
-    @@parsed_page = Nokogiri::HTML(open(@@url))
-  end
-
-  def self.scrape_songs
-     self.get_page.css("div.searchResultNode.col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2.col-xs-12")
-  end
   
   def self.make_songs
     LookeyMonster::Scraper.scrape_songs.each do |s|
@@ -31,13 +24,13 @@ class LookeyMonster::Scraper
   
   def self.scraper
     LookeyMonster::Song.reset_all
-    @@input = gets.chomp
-    if @@input == "list" 
-      url = "https://tunebat.com/Index/GetFeaturedTracks"
-    elsif @@input.include?(" ") == true
-      @@url = "https://tunebat.com/Search?q=" + @@input.downcase.gsub!(" ","+")
+    input = gets.chomp
+    if input == "list" 
+      @@url = "https://tunebat.com/Index/GetFeaturedTracks"
+    elsif input.include?(" ") == true
+      @@url = "https://tunebat.com/Search?q=" + input.downcase.gsub!(" ","+")
     else 
-     @@url = "https://tunebat.com/Search?q=" + @@input.downcase
+     @@url = "https://tunebat.com/Search?q=" + input.downcase
     end
     LookeyMonster::Scraper.get_page
     song_listings = @@parsed_page.css('div.searchResultList.row.main-row')
@@ -59,6 +52,13 @@ class LookeyMonster::Scraper
     LookeyMonster::Scraper.make_songs
   end
 
+  def self.get_page
+    @@parsed_page = Nokogiri::HTML(open(@@url))
+  end
+
+  def self.scrape_songs
+     self.get_page.css("div.searchResultNode.col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2.col-xs-12")
+  end
 end
 
 
