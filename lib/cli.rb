@@ -15,7 +15,7 @@ class LookeyMonster::CLI
     menu
     input = gets.chomp.downcase
     if input == "list"
-      LookeyMonster::Scraper.new.scraper
+      LookeyMonster::Scraper.scraper
       print "\n\n\n\n\n"
       print logo
       s = LookeyMonster::Song.find(input.to_i)
@@ -45,7 +45,7 @@ class LookeyMonster::CLI
       print "-------".cyan
       print "Enter track and artist below".light_red
       print "------\n\n\n".cyan
-      LookeyMonster::Scraper.new.scraper
+      LookeyMonster::Scraper.scraper
       print_searched_song
     elsif input == "exit"
       exit
