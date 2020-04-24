@@ -31,11 +31,7 @@ class LookeyMonster::Scraper
   def self.scraper
     LookeyMonster::Song.reset_all
     input = gets.chomp
-    # if input == "list" 
-    #   @@url = "https://tunebat.com/Index/GetFeaturedTracks"
-    #   response = HTTParty.get(@@url)
-    #   response.parsed_response
-    #   binding.pry
+    
     if input.include?(" ") == true
       @@url = "https://tunebat.com/Search?q=" + input.downcase.gsub!(" ","+")
     else 
