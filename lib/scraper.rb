@@ -24,8 +24,8 @@ class LookeyMonster::Scraper
   
   def self.top_scraper
       url = "https://tunebat.com/Index/GetFeaturedTracks"
-      response = HTTParty.get(url)
-      
+      res = HTTParty.get(url)
+      LookeyMonster::Song.new_from_json(res["TrackItems"])
       # response.parsed_response
       # binding.pry
   end

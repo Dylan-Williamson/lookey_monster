@@ -27,8 +27,8 @@ class LookeyMonster::Song
   
   def self.new_from_json(hsh)
     hsh.each do |song_hash|
-      new(hsh["Name"], hsh["ArtistName"])
-    
+      new(hsh["Name"], hsh["ArtistName"], hsh["Key"], hsh["BPM"])
+    end
   end
   
   def self.new_from_index_page(s)
