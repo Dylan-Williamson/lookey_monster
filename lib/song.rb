@@ -25,6 +25,12 @@ class LookeyMonster::Song
     @@all << self
   end
   
+  def self.new_from_json(hsh)
+    hsh.each do |song_hash|
+      new(hsh["Name"], hsh["ArtistName"])
+    
+  end
+  
   def self.new_from_index_page(s)
     self.new(
     s.css('div.row.search-track-name').text,

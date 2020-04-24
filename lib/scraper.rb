@@ -21,15 +21,13 @@ class LookeyMonster::Scraper
     end
   end
   
-  def self.make_top_songs
-    
-  end
   
   def self.top_scraper
       url = "https://tunebat.com/Index/GetFeaturedTracks"
       response = HTTParty.get(url)
-      response.parsed_response
-      binding.pry
+      
+      # response.parsed_response
+      # binding.pry
   end
   
   
