@@ -27,7 +27,7 @@ class LookeyMonster::Song
   
   def self.new_from_json(song_array)
     song_array.each do |hsh|
-      new(hsh["Name"], hsh["ArtistName"], hsh["Key"], hsh["BPM"])
+      new(hsh["Name"], hsh["ArtistName"], hsh["Key"], hsh["BPM"], hsh["Acousticness"], hsh["Danceability"], hsh["Energy"], hsh["Instrumentalness"], hsh["Liveness"], hsh["Loudness"], hsh["Speechiness"], hsh["TimeSignature"])
     end
   end
   

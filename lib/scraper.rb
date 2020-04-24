@@ -14,7 +14,6 @@ class LookeyMonster::Scraper
     LookeyMonster::Song.reset_all
     url = "https://tunebat.com/Index/GetFeaturedTracks"
     hash = JSON.parse open(url).read
-    # res = HTTParty.get(url)
     # LookeyMonster::Song.new_from_json(res["TrackItems"])
     binding.pry
   end
