@@ -20,11 +20,13 @@ class LookeyMonster::CLI
       print logo
       s = LookeyMonster::Song.find(input.to_i)
       print_top_songs
-      print "Which song would you like to see? [1-100]\n\n"
+      print "\nWhich song would you like more info on? [1-100]\n\n".cyan
       
-      input = gets.strip
-
-      print_top_song(s)
+      input = gets.strip.to_i
+      
+      selection = input - 1
+      
+      print_top_song(selection)
 
       print "\n\nWould you like to view another song? Yes[y] or No[n]\n\n"
 
@@ -96,12 +98,31 @@ class LookeyMonster::CLI
 
   def print_top_song(s)
     print "\n\n\n\n\n\n"
-    logo
-    print "#{s.track} ".light_red
-    print "by".cyan
-    print " #{s.artist}\n".light_red
-    print "Key: ".light_red + "#{s.key}\n\n".cyan
-    print "Tempo: ".light_red + "#{s.tempo}".cyan
+    print logo
+    print "Song: ".light_red
+    print "#{LookeyMonster::Song.all[s].track} ".cyan
+    print "by".light_red
+    print " #{LookeyMonster::Song.all[s].artist}\n\n".cyan
+    print "Key: ".light_red
+    print "#{LookeyMonster::Song.all[s].key}\n\n".cyan
+    print "Time Signature: ".light_red
+    print "#{LookeyMonster::Song.all[s].time_signature}\n\n".cyan
+    print "Tempo: ".light_red
+    print "#{LookeyMonster::Song.all[s].tempo}\n\n".cyan
+    print "Acousticness: ".light_red
+    print "#{LookeyMonster::Song.all[s].acousticness}\n\n".cyan
+    print "Danceability: ".light_red
+    print "#{LookeyMonster::Song.all[s].danceability}\n\n".cyan
+    print "Energy: ".light_red
+    print "#{LookeyMonster::Song.all[s].energy}\n\n".cyan
+    print "Instrumentalness: ".light_red
+    print "#{LookeyMonster::Song.all[s].instrumentalness}\n\n".cyan
+    print "Liveness: ".light_red
+    print "#{LookeyMonster::Song.all[s].liveness}\n\n".cyan
+    print "Loudness: ".light_red
+    print "#{LookeyMonster::Song.all[s].loudness}\n\n".cyan
+    print "Speechiness: ".light_red
+    print "#{LookeyMonster::Song.all[s].speechiness}\n\n".cyan
   end
 
   def print_top_songs

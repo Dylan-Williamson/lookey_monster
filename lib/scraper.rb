@@ -16,7 +16,7 @@ class LookeyMonster::Scraper
     hash = JSON.parse open(url).read
     # s = hash["TrackItems"]
     LookeyMonster::Song.mass_create_from_api(hash["TrackItems"])
-    binding.pry
+    # binding.pry
   end
   
   
