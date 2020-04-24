@@ -103,7 +103,7 @@ class LookeyMonster::CLI
     print "by".cyan
     print " #{s.artist}\n".light_red
     print "Key: ".light_red + "#{s.key}\n\n".cyan
-    print "Tempo: ".light_red + "#{s.tempo} BPM".cyan
+    print "Tempo: ".light_red + "#{s.tempo}".cyan
   end
 
   def print_top_songs
