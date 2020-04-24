@@ -20,7 +20,8 @@ class LookeyMonster::CLI
       print logo
       s = LookeyMonster::Song.find(input.to_i)
       print_top_songs
-      print "\nWhich song would you like more info on? [1-100]\n\n".cyan
+      print "\nWhich song would you like more info on? ".light_red
+      print "[1-100]\n\n".cyan
       
       input = gets.strip.to_i
       
@@ -28,7 +29,8 @@ class LookeyMonster::CLI
       
       print_top_song(selection)
 
-      print "\n\nWould you like to view another song? Yes[y] or No[n]\n\n"
+      print "\n\nWould you like to view another song? ".light_red
+      print "Yes[y] or No[n]\n\n".cyan
 
       input = gets.strip.downcase
       if input == "y"
@@ -126,7 +128,9 @@ class LookeyMonster::CLI
   end
 
   def print_top_songs
-    print "\nLooKEY Monster's Top 100 List\n\n".light_red
+    print "\n------".cyan
+    print "LooKEY Monster's Top 100 List".light_red
+    print "------\n\n".cyan
     LookeyMonster::Song.all.each_with_index do |song, index|
       print "#{index + 1}.".cyan
       print " #{song.track} ".light_red
