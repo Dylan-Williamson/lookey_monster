@@ -67,8 +67,6 @@ class LookeyMonster::CLI
     print "#{LookeyMonster::Song.all.first.key}\n\n".cyan
     print "Tempo: ".light_red
     print "#{LookeyMonster::Song.all.first.tempo}\n\n".cyan
-    print "Url: ".light_red
-    print "#{LookeyMonster::Song.all.first.url}\n\n\n".cyan
     print "Want to search for another song? \n".light_red
     print "Yes[y] or No[n]?\n".cyan
     input = gets.chomp.downcase

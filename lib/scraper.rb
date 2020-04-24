@@ -38,8 +38,7 @@ class LookeyMonster::Scraper
         track: song_listing.css('div.row.search-track-name').text,
         artist: song_listing.css('div.row.search-artist-name').text,
         key: song_listing.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[0],
-        tempo: song_listing.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[3] + "BPM",
-        # url: song_listing.css(a["href"]).text
+        tempo: song_listing.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[3] + "BPM"
       }
       
       @@songs << song

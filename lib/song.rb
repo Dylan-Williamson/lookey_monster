@@ -9,19 +9,35 @@ class LookeyMonster::Song
   @@songs = []
   @@all = []
 
-  attr_accessor :track, :artist, :key, :tempo, :url
+  attr_accessor :track, :artist, :key, :tempo, 
   
-  def initialize(track=nil, artist=nil, key=nil, tempo=nil, url=nil)
+  def initialize(track=nil, artist=nil, key=nil, tempo=nil, acousticness=nil, danceability=nil, energy=nil, instrumentalness=nil, liveness=nil, loudness=nil, speechiness=nil, time_signature=nil)
+    
     @track = track
     @artist = artist
     @key = key 
     @tempo = tempo
-    @url = url
+    @acousticness = acousticness
+    @danceability = danceability
+    @energy = energy
+    @instrumentalness = instrumentalness
+    @liveness = liveness
+    @loudness = loudness
+    @speechiness = speechiness
+    @time_signature = time_signature
+    
     self.track = track if track
     self.artist = artist if artist
     self.key = key if key
     self.tempo = tempo if tempo
-    self. url = url if url
+    self.acousticness = acousticness if acousticness
+    self.danceability = danceability if danceability
+    self.energy = energy if energy
+    self.instrumentalness = instrumentalness if instrumentalness
+    self.liveness = liveness if liveness
+    self.loudness = loudness if loudness
+    self.speechiness = speechiness if speechiness
+    self.time_signature = time_signature if time_signature
     @@all << self
   end
   
