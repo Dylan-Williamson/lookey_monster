@@ -25,19 +25,7 @@ class LookeyMonster::Song
     @loudness = loudness
     @speechiness = speechiness
     @time_signature = time_signature
-    # self.track = track if track
-    # self.artist = artist if artist
-    # self.key = key if key
-    # self.tempo = tempo if tempo
-    # self.acousticness = acousticness if acousticness
-    # self.danceability = danceability if danceability
-    # self.energy = energy if energy
-    # self.instrumentalness = instrumentalness if instrumentalness
-    # self.liveness = liveness if liveness
-    # self.loudness = loudness if loudness
-    # self.speechiness = speechiness if speechiness
-    # self.time_signature = time_signature if time_signature
-    @@all << self
+    save
   end
   
   def self.mass_create_from_api(song_array)
@@ -60,7 +48,7 @@ class LookeyMonster::Song
     self.all[id-1]
   end
   
-  def self.save
+  def save
     @@all << self
   end
   
