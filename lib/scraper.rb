@@ -2,6 +2,7 @@ require 'pry'
 require 'httparty'
 require 'nokogiri'
 require 'open-uri'
+require 'json'
 require_relative './lookey_monster.rb'
 require_relative './song.rb'
 
@@ -23,11 +24,12 @@ class LookeyMonster::Scraper
   
   
   def self.top_scraper
-      url = "https://tunebat.com/Index/GetFeaturedTracks"
-      res = HTTParty.get(url)
-      LookeyMonster::Song.new_from_json(res["TrackItems"])
-      # response.parsed_response
-      # binding.pry
+    url = "https://tunebat.com/Index/GetFeaturedTracks"
+    hash = JSON.parse open(url)["TrackItems"].read
+      # url = "https://tunebat.com/Index/GetFeaturedTracks"
+      # res = HTTParty.get(url)
+      # LookeyMonster::Song.new_from_json(res["TrackItems"])
+      binding.pry
   end
   
   
@@ -45,6 +47,7 @@ class LookeyMonster::Scraper
       @@url = "https://tunebat.com/Search?q=" + input.downcase
     end
     LookeyMonster::Scraper.get_page
+    
     song_listings = @@parsed_page.css('div.searchResultList.row.main-row')
     # binding.pry
     
@@ -75,6 +78,6 @@ end
 
 
 
-# LookeyMonster::Scraper.new.scraper
+LookeyMonster::Scraper.top_scraper
 
  
