@@ -10,14 +10,6 @@ class LookeyMonster::Scraper
     @@songs
   end
   
-  
-  def self.make_songs
-    LookeyMonster::Scraper.scrape_songs.each do |s|
-      LookeyMonster::Song.new_from_index_page(s)
-    end
-  end
-  
-  
   def self.top_scraper
     LookeyMonster::Song.reset_all
     url = "https://tunebat.com/Index/GetFeaturedTracks"
@@ -64,6 +56,12 @@ class LookeyMonster::Scraper
 
   def self.scrape_songs
      self.get_page.css("div.searchResultNode.col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2.col-xs-12")
+  end
+  
+  def self.make_songs
+    LookeyMonster::Scraper.scrape_songs.each do |s|
+      LookeyMonster::Song.new_from_index_page(s)
+    end
   end
 end
 
