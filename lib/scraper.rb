@@ -25,11 +25,10 @@ class LookeyMonster::Scraper
   
   def self.top_scraper
     url = "https://tunebat.com/Index/GetFeaturedTracks"
-    hash = JSON.parse open(url)["TrackItems"].read
-      # url = "https://tunebat.com/Index/GetFeaturedTracks"
-      # res = HTTParty.get(url)
-      # LookeyMonster::Song.new_from_json(res["TrackItems"])
-      binding.pry
+    hash = JSON.parse open(url).read
+    # res = HTTParty.get(url)
+    # LookeyMonster::Song.new_from_json(res["TrackItems"])
+      # binding.pry
   end
   
   
