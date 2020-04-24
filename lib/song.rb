@@ -9,7 +9,7 @@ class LookeyMonster::Song
   @@songs = []
   @@all = []
 
-  attr_accessor :track, :artist, :key, :tempo, 
+  attr_accessor :track, :artist, :key, :tempo, :acousticness, :danceability, :energy, :instrumentalness, :liveness, :loudness, :speechiness, :time_signature
   
   def initialize(track=nil, artist=nil, key=nil, tempo=nil, acousticness=nil, danceability=nil, energy=nil, instrumentalness=nil, liveness=nil, loudness=nil, speechiness=nil, time_signature=nil)
     
@@ -26,19 +26,19 @@ class LookeyMonster::Song
     @speechiness = speechiness
     @time_signature = time_signature
     
-    self.track = track if track
-    self.artist = artist if artist
-    self.key = key if key
-    self.tempo = tempo if tempo
-    self.acousticness = acousticness if acousticness
-    self.danceability = danceability if danceability
-    self.energy = energy if energy
-    self.instrumentalness = instrumentalness if instrumentalness
-    self.liveness = liveness if liveness
-    self.loudness = loudness if loudness
-    self.speechiness = speechiness if speechiness
-    self.time_signature = time_signature if time_signature
-    @@all << self
+    # self.track = track if track
+    # self.artist = artist if artist
+    # self.key = key if key
+    # self.tempo = tempo if tempo
+    # self.acousticness = acousticness if acousticness
+    # self.danceability = danceability if danceability
+    # self.energy = energy if energy
+    # self.instrumentalness = instrumentalness if instrumentalness
+    # self.liveness = liveness if liveness
+    # self.loudness = loudness if loudness
+    # self.speechiness = speechiness if speechiness
+    # self.time_signature = time_signature if time_signature
+    LookeyMonster::Song.save
   end
   
   def self.mass_create_from_api(song_array)

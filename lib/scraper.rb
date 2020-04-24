@@ -14,29 +14,9 @@ class LookeyMonster::Scraper
     LookeyMonster::Song.reset_all
     url = "https://tunebat.com/Index/GetFeaturedTracks"
     hash = JSON.parse open(url).read
-    # LookeyMonster::Song.new_from_json(hash)
-    s = hash["TrackItems"]
+    # s = hash["TrackItems"]
+    LookeyMonster::Song.mass_create_from_api(hash["TrackItems"])
     binding.pry
-    # s.each do |song|
-    #   song = {
-    #     track: s["Name"].text,
-    #     artist: s["ArtistName"],
-    #     key: s["Key"],
-    #     tempo: s["BPM"],
-    #     acousticness: s["Acousticness"],
-    #     danceability: s["Danceability"],
-    #     energy: s["Energy"],
-    #     instrumentalness: s["Instrumentalness"],
-    #     liveness: s["Liveness"],
-    #     loudness: s["Loudness"],
-    #     speechiness: s["Speechiness"],
-    #     time_signature: s["TimeSignature"],
-    #   }
-      @@songs << song
-      LookeyMonster::Song.song_hash << song
-    end
-    @@songs.clear
-    LookeyMonster::Scraper.make_songs
   end
   
   
