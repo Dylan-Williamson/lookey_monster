@@ -105,10 +105,10 @@ class LookeyMonster::CLI
     print " #{LookeyMonster::Song.all[s].artist}\n\n".cyan
     print "Key: ".light_red
     print "#{LookeyMonster::Song.all[s].key}\n\n".cyan
-    print "Time Signature: ".light_red
-    print "#{LookeyMonster::Song.all[s].time_signature}\n\n".cyan
     print "Tempo: ".light_red
     print "#{LookeyMonster::Song.all[s].tempo}\n\n".cyan
+    print "Time Signature: ".light_red
+    print "#{LookeyMonster::Song.all[s].time_signature}\n\n".cyan
     print "Acousticness: ".light_red
     print "#{LookeyMonster::Song.all[s].acousticness}\n\n".cyan
     print "Danceability: ".light_red
