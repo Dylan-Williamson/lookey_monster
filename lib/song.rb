@@ -55,7 +55,7 @@ class LookeyMonster::Song
     @@all << self
   end
   
-  def self.song_hash
+  def self.song_hashes
     @@songs
   end
 
@@ -66,6 +66,5 @@ class LookeyMonster::Song
   def self.reset_all
     @@all.clear
   end
-    
 end
 

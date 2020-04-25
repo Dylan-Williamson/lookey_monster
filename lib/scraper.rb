@@ -43,7 +43,7 @@ class LookeyMonster::Scraper
         }
         
         @@songs << song
-        LookeyMonster::Song.song_hash << song
+        LookeyMonster::Song.song_hashes << song
       end
         @@songs.clear
         LookeyMonster::Scraper.make_songs
