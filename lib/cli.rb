@@ -23,11 +23,14 @@ class LookeyMonster::CLI
       print "\nWhich song would you like more info on? ".light_red
       print "[1-100]\n\n".cyan
       
-      input = gets.strip.to_i
+      input = gets.strip
       
-      selection = input - 1
-      
-      print_top_song(selection)
+      if (input != '0') && (input.to_i.to_s != input.strip)
+        print "\nInvalid response. You will now exit automatically.\n".light_red
+        exit
+      else
+        print_top_song(input.to_i - 1)
+      end
 
       print "\n\nWould you like to view another song? ".light_red
       print "Yes[y] or No[n]\n\n".cyan
@@ -41,21 +44,18 @@ class LookeyMonster::CLI
         print "Thank you for using LooKEY Monster!\n\n"
         exit
       else
-        print "\nI'm sorry, could you try that again? Enter Yes[y] or No[n]"
+        print "\nI'm sorry, could you try that again? Enter Yes[y] or No[n]\n".light_red
         start
       end
     elsif input == "search"
-      print logo
-      print "-------".cyan
-      print "Enter track and artist below".light_red
-      print "------\n\n\n".cyan
+      print logo + "-------".cyan + "Enter track and artist below".light_red + "------\n\n\n".cyan
       LookeyMonster::Scraper.scraper
       print_searched_song
     elsif input == "exit"
       exit
     else
       logo
-      print "Care to try again? Enter [list] [search] or [exit]\n\n"
+      print "Care to try again? Enter [list] [search] or [exit]\n\n".light_red
       start
     end
   end
