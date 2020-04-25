@@ -16,10 +16,11 @@ class LookeyMonster::CLI
     input = gets.chomp.downcase
     if input == "list"
       LookeyMonster::Scraper.top_scraper
-      print "\n\n\n\n\n" + logo
+      print "\n\n\n\n\n"
+      print logo
       s = LookeyMonster::Song.find(input.to_i)
       print_top_songs
-      print "\nWhich song would you like more info on? ".light_red +"[1-100]\n\n".cyan
+      print "\nWhich song would you like more info on? ".light_red + "[1-100]\n\n".cyan
       
       input = gets.strip
       
@@ -38,14 +39,15 @@ class LookeyMonster::CLI
         start
       elsif input == "n"
         logo
-        print "Thank you for using LooKEY Monster!\n\n"
+        print goodbye
         exit
       else
         print "\nI'm sorry, could you try that again? Enter Yes[y] or No[n]\n".light_red
         start
       end
     elsif input == "search"
-      print logo + "-------".cyan + "Enter track and artist below".light_red + "------\n\n\n".cyan
+      print logo 
+      print "-------".cyan + "Enter track and artist below".light_red + "------\n\n\n".cyan
       LookeyMonster::Scraper.scraper
       print_searched_song
     elsif input == "exit"
@@ -58,7 +60,9 @@ class LookeyMonster::CLI
   end
   
   def print_searched_song
-    print "\n\n\n\n\n\n" + logo + "Song: ".light_red +"#{LookeyMonster::Song.all.first.track} ".cyan + "by".light_red + " #{LookeyMonster::Song.all.first.artist}\n\n".cyan + "Key: ".light_red + "#{LookeyMonster::Song.all.first.key}\n\n".cyan + "Tempo: ".light_red + "#{LookeyMonster::Song.all.first.tempo}\n\n".cyan + "Want to search for another song? \n".light_red + "Yes[y] or No[n]?\n".cyan
+    print "\n\n\n\n\n\n"
+    print logo
+    print "Song: ".light_red + "#{LookeyMonster::Song.all.first.track} ".cyan + "by".light_red + " #{LookeyMonster::Song.all.first.artist}\n\n".cyan + "Key: ".light_red + "#{LookeyMonster::Song.all.first.key}\n\n".cyan + "Tempo: ".light_red + "#{LookeyMonster::Song.all.first.tempo}\n\n".cyan + "Want to search for another song? \n".light_red + "Yes[y] or No[n]?\n".cyan
     input = gets.chomp.downcase
     if input == "n"
       print goodbye
@@ -83,7 +87,9 @@ class LookeyMonster::CLI
   end
 
   def print_top_song(s)
-    print "\n\n\n\n\n\n" + logo + "Song: ".light_red + "#{LookeyMonster::Song.all[s].track} ".cyan + "by".light_red + " #{LookeyMonster::Song.all[s].artist}\n\n".cyan + "Key: ".light_red + "#{LookeyMonster::Song.all[s].key}\n\n".cyan + "Tempo: ".light_red + "#{LookeyMonster::Song.all[s].tempo}\n\n".cyan + "Time Signature: ".light_red + "#{LookeyMonster::Song.all[s].time_signature}\n\n".cyan + "Acousticness: ".light_red + "#{LookeyMonster::Song.all[s].acousticness}\n\n".cyan + "Danceability: ".light_red + "#{LookeyMonster::Song.all[s].danceability}\n\n".cyan + "Energy: ".light_red + "#{LookeyMonster::Song.all[s].energy}\n\n".cyan + "Instrumentalness: ".light_red + "#{LookeyMonster::Song.all[s].instrumentalness}\n\n".cyan + "Liveness: ".light_red + "#{LookeyMonster::Song.all[s].liveness}\n\n".cyan + "Loudness: ".light_red + "#{LookeyMonster::Song.all[s].loudness}\n\n".cyan + "Speechiness: ".light_red + "#{LookeyMonster::Song.all[s].speechiness}\n\n".cyan
+    print "\n\n\n\n\n\n"
+    print logo
+    print "Song: ".light_red + "#{LookeyMonster::Song.all[s].track} ".cyan + "by".light_red + " #{LookeyMonster::Song.all[s].artist}\n\n".cyan + "Key: ".light_red + "#{LookeyMonster::Song.all[s].key}\n\n".cyan + "Tempo: ".light_red + "#{LookeyMonster::Song.all[s].tempo}\n\n".cyan + "Time Signature: ".light_red + "#{LookeyMonster::Song.all[s].time_signature}\n\n".cyan + "Acousticness: ".light_red + "#{LookeyMonster::Song.all[s].acousticness}\n\n".cyan + "Danceability: ".light_red + "#{LookeyMonster::Song.all[s].danceability}\n\n".cyan + "Energy: ".light_red + "#{LookeyMonster::Song.all[s].energy}\n\n".cyan + "Instrumentalness: ".light_red + "#{LookeyMonster::Song.all[s].instrumentalness}\n\n".cyan + "Liveness: ".light_red + "#{LookeyMonster::Song.all[s].liveness}\n\n".cyan + "Loudness: ".light_red + "#{LookeyMonster::Song.all[s].loudness}\n\n".cyan + "Speechiness: ".light_red + "#{LookeyMonster::Song.all[s].speechiness}\n\n".cyan
   end
 
   def print_top_songs
@@ -114,7 +120,9 @@ class LookeyMonster::CLI
   end
 
   def goodbye
-    print "\n\n\n\n\n\n\n" + logo + "Thank you for using LooKEY Monster!\n\n".light_red
+    print "\n\n\n\n\n\n\n"
+    print logo
+    print "Thank you for using LooKEY Monster!\n\n".light_red
   end
 end
 
