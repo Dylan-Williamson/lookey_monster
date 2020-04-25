@@ -1,6 +1,6 @@
 # LookeyMonster
 
-Enter artist name and song title to get access to the key, relative minor key, the notes and chords associated with the song's key and the lyrics to the song.
+Get key, tempo and other musical information via search or upon browsing the top 100 list.
 
 ## Installation
 
@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+After running 'bundle install', run 'bin/lookey_monster' to run the program. Follow terminal prompts to navigate through the program and as always, run 'exit' or 'CTRL + Z' to exit the program.
 
 ## Development
 
