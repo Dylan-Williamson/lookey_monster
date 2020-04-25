@@ -1,10 +1,3 @@
-# require 'pry'
-# require_relative './lookey_monster'
-# require 'nokogiri'
-# require 'open-uri'
-# require 'httparty'
-require_relative './lookey_monster.rb'
-
 class LookeyMonster::Song
   
   @@songs = []

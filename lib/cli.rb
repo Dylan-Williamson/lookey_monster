@@ -1,10 +1,3 @@
-# require_relative './lookey_monster'
-# require_relative "../lib/scraper.rb"
-# require_relative "../lib/song.rb"
-# require 'nokogiri'
-# require 'colorize'
-require_relative './lookey_monster.rb'
-
 class LookeyMonster::CLI
   def call
     logo

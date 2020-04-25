@@ -1,11 +1,6 @@
-# require_relative './lookey_monster.rb'
-# require_relative './song.rb'
-require_relative './lookey_monster.rb'
-
 class LookeyMonster::Scraper
 
   @@songs = []
-  
   
   def self.songs
     @@songs
