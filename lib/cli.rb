@@ -19,7 +19,8 @@ class LookeyMonster::CLI
       print "\n\n\n\n\n"
       print logo
       print_top_songs
-      print "\nWhich song would you like more info on? ".light_red + "[1-100]\n\n".cyan
+      print "\nWhich song would you like more info on? ".light_red
+      print "[1-100]\n\n".cyan
       
       input = gets.strip
       
@@ -42,7 +43,7 @@ class LookeyMonster::CLI
         print goodbye
         exit
       else
-        print "\nI'm sorry, could you try that again? Enter Yes[y] or No[n]\n".light_red
+        print "\nI'm sorry, could you try that again? Enter Yes[y] or No[n]\n\n".light_red
         start
       end
     elsif input == "search"
@@ -70,7 +71,8 @@ class LookeyMonster::CLI
     print " #{LookeyMonster::Song.all.first.artist}\n\n".cyan
     print "Key: ".light_red
     print "#{LookeyMonster::Song.all.first.key}\n\n".cyan
-    print "Tempo: ".light_red + "#{LookeyMonster::Song.all.first.tempo}\n\n".cyan + "Want to search for another song? \n".light_red
+    print "Tempo: ".light_red + "#{LookeyMonster::Song.all.first.tempo}\n\n".cyan
+    print "Want to search for another song? \n".light_red
     print "Yes[y] or No[n]?\n".cyan
     
     input = gets.chomp.downcase

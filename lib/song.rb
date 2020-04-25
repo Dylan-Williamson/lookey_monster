@@ -11,7 +11,7 @@ class LookeyMonster::Song
 
   attr_accessor :track, :artist, :key, :tempo, :acousticness, :danceability, :energy, :instrumentalness, :liveness, :loudness, :speechiness, :time_signature
   
-  def initialize(track=nil, artist=nil, key=nil, tempo=nil, acousticness=nil, danceability=nil, energy=nil, instrumentalness=nil, liveness=nil, loudness=nil, speechiness=nil, time_signature=nil)
+  def initialize(track, artist, key, tempo, acousticness = nil, danceability = nil, energy = nil, instrumentalness = nil, liveness = nil, loudness = nil, speechiness = nil, time_signature = nil)
     
     @track = track
     @artist = artist
