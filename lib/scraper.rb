@@ -1,5 +1,6 @@
+# require_relative './lookey_monster.rb'
+# require_relative './song.rb'
 require_relative './lookey_monster.rb'
-require_relative './song.rb'
 
 class LookeyMonster::Scraper
 
@@ -22,7 +23,7 @@ class LookeyMonster::Scraper
   def self.scraper
     LookeyMonster::Song.reset_all
     
-    input = gets.chomp
+    input = gets.strip
     
     if input.include?(" ") == true
       @@url = "https://tunebat.com/Search?q=" + input.downcase.gsub!(" ","+")
@@ -33,19 +34,25 @@ class LookeyMonster::Scraper
     
     song_listings = @@parsed_page.css('div.searchResultList.row.main-row')
     
-    song_listings.each do |song_listing|
-      song = {
-        track: song_listing.css('div.row.search-track-name').text,
-        artist: song_listing.css('div.row.search-artist-name').text,
-        key: song_listing.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[0],
-        tempo: song_listing.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[3] + "BPM"
-      }
-      
-      @@songs << song
-      LookeyMonster::Song.song_hash << song
+      # binding.pry
+    if song_listings.first.css('div.row.search-track-name').text == ""
+      print "\nSorry, your search found 0 results\n\n".light_red
+      exit
+    else
+      song_listings.each do |song_listing|
+        song = {
+          track: song_listing.css('div.row.search-track-name').text,
+          artist: song_listing.css('div.row.search-artist-name').text,
+          key: song_listing.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[0],
+          tempo: song_listing.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[3] + "BPM"
+        }
+        
+        @@songs << song
+        LookeyMonster::Song.song_hash << song
+      end
+        @@songs.clear
+        LookeyMonster::Scraper.make_songs
     end
-    @@songs.clear
-    LookeyMonster::Scraper.make_songs
   end
 
   def self.get_page

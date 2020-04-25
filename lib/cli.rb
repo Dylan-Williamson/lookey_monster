@@ -1,8 +1,9 @@
-require_relative './lookey_monster'
-require_relative "../lib/scraper.rb"
-require_relative "../lib/song.rb"
-require 'nokogiri'
-require 'colorize'
+# require_relative './lookey_monster'
+# require_relative "../lib/scraper.rb"
+# require_relative "../lib/song.rb"
+# require 'nokogiri'
+# require 'colorize'
+require_relative './lookey_monster.rb'
 
 class LookeyMonster::CLI
   def call
@@ -13,7 +14,7 @@ class LookeyMonster::CLI
   
   def start
     menu
-    input = gets.chomp.downcase
+    input = gets.strip.downcase
     if input == "list"
       LookeyMonster::Scraper.top_scraper
       print "\n\n\n\n\n"
