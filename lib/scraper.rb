@@ -12,16 +12,16 @@ class LookeyMonster::Scraper
   
   def self.top_scraper
     LookeyMonster::Song.reset_all
+    
     url = "https://tunebat.com/Index/GetFeaturedTracks"
     hash = JSON.parse open(url).read
-    # s = hash["TrackItems"]
     LookeyMonster::Song.mass_create_from_api(hash["TrackItems"])
-    # binding.pry
   end
   
   
   def self.scraper
     LookeyMonster::Song.reset_all
+    
     input = gets.chomp
     
     if input.include?(" ") == true
@@ -32,7 +32,6 @@ class LookeyMonster::Scraper
     LookeyMonster::Scraper.get_page
     
     song_listings = @@parsed_page.css('div.searchResultList.row.main-row')
-    # binding.pry
     
     song_listings.each do |song_listing|
       song = {
@@ -64,8 +63,5 @@ class LookeyMonster::Scraper
   end
 end
 
-
-
-LookeyMonster::Scraper.top_scraper
 
  
