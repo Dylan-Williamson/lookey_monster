@@ -18,8 +18,8 @@ class LookeyMonster::CLI
       
       input = gets.strip
       
-      if (input != '0') && (input.to_i.to_s != input.strip)
-        print "\nInvalid response. You will now exit automatically.\n".light_red
+      if (input != '0') && (input.to_i.to_s != input) or (input.to_i > LookeyMonster::Song.size)
+        print "\nInvalid response. You will now exit automatically.\n\n".light_red
         exit
       else
         print_top_song(input.to_i - 1)
@@ -126,7 +126,7 @@ class LookeyMonster::CLI
   end
 
   def print_top_songs
-    print "\n------".cyan
+    print "------".cyan
     print "LooKEY Monster's Top 100 List".light_red
     print "------\n\n".cyan
     LookeyMonster::Song.all.each_with_index do |song, index|
@@ -159,7 +159,7 @@ class LookeyMonster::CLI
 ·██ ▐███▪▪     •█▌▐█▐█ ▀. •██  ▀▄.▀·▀▄ █·
 ▐█ ▌▐▌▐█· ▄█▀▄ ▐█▐▐▌▄▀▀▀█▄ ▐█.▪▐▀▀▪▄▐▀▀▄ 
 ██ ██▌▐█▌▐█▌.▐▌██▐█▌▐█▄▪▐█ ▐█▌·▐█▄▄▌▐█•█▌
-▀▀  █▪▀▀▀ ▀█▄▀▪▀▀ █▪ ▀▀▀▀  ▀▀▀  ▀▀▀ .▀  ▀\n\n\n".light_cyan
+▀▀  █▪▀▀▀ ▀█▄▀▪▀▀ █▪ ▀▀▀▀  ▀▀▀  ▀▀▀ .▀  ▀\n\n\n".cyan
   end
 
   def goodbye

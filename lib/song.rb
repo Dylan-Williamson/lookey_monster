@@ -55,6 +55,10 @@ class LookeyMonster::Song
     @@all << self
   end
   
+  def self.size 
+    @@all.count
+  end
+  
   def self.song_hashes
     @@songs
   end
