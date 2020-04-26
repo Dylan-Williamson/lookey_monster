@@ -28,8 +28,7 @@ class LookeyMonster::Scraper
     LookeyMonster::Scraper.get_page
     
     song_listings = @@parsed_page.css('div.searchResultList.row.main-row')
-    
-      # binding.pry
+
     if song_listings.first.css('div.row.search-track-name').text == ""
       print "\nSorry, your search found 0 results\n\n".light_red
       exit
