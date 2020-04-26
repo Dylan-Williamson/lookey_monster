@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-After installing the gem and running 'bundle install', run 'bin/lookey_monster' to run the program. Follow terminal prompts to navigate through the program and as always, run 'exit' or 'CTRL + Z' to exit the program.
+After installing the gem and running 'bundle install', run `bin/lookey_monster` to run the program. Follow terminal prompts to navigate through the program and as always, run 'exit' or 'CTRL + Z' to exit the program.
 
 ## Development
 
