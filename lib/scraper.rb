@@ -1,11 +1,5 @@
 class LookeyMonster::Scraper
 
-  @@songs = []
-  
-  def self.songs
-    @@songs
-  end
-  
   def self.top_scraper
     LookeyMonster::Song.reset_all
     
@@ -40,12 +34,8 @@ class LookeyMonster::Scraper
           key: song_listing.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[0],
           tempo: song_listing.css('div.row.search-attribute-value').text.scan(/\d+|\D+/)[3] + "BPM"
         }
-        
-        @@songs << song
-        LookeyMonster::Song.song_hashes << song
       end
-        @@songs.clear
-        LookeyMonster::Scraper.make_songs
+        LookeyMonster::Song.make_songs
     end
   end
 
@@ -63,6 +53,3 @@ class LookeyMonster::Scraper
     end
   end
 end
-
-
- 

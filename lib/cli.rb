@@ -33,7 +33,6 @@ class LookeyMonster::CLI
         logo
         start
       elsif input == "n"
-        logo
         print goodbye
         exit
       else
@@ -170,6 +169,3 @@ class LookeyMonster::CLI
 end
 
 LookeyMonster::CLI
-
-
-

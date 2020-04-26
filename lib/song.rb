@@ -1,6 +1,5 @@
 class LookeyMonster::Song
   
-  @@songs = []
   @@all = []
 
   attr_accessor :track, :artist, :key, :tempo, :acousticness, :danceability, :energy, :instrumentalness, :liveness, :loudness, :speechiness, :time_signature
@@ -50,6 +49,11 @@ class LookeyMonster::Song
     s.css('a.href').text
     )
   end
+
+  def self.make_songs
+    LookeyMonster::Scraper.scrape_songs.each do |s|
+      LookeyMonster::Song.new_from_index_page(s)
+    end
   
   def save
     @@all << self
@@ -71,4 +75,3 @@ class LookeyMonster::Song
     @@all.clear
   end
 end
-
