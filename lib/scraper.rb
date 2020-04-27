@@ -27,7 +27,7 @@ class LookeyMonster::Scraper
       print "\nSorry, your search found 0 results\n\n".light_red
       exit
     else
-      song_listings.each do |song_listing|
+      song_listings.first do |song_listing|
         song = {
           track: song_listing.css('div.row.search-track-name').text,
           artist: song_listing.css('div.row.search-artist-name').text,
