@@ -54,6 +54,7 @@ class LookeyMonster::Song
     LookeyMonster::Scraper.scrape_songs.each do |s|
       LookeyMonster::Song.new_from_index_page(s)
     end
+  end
   
   def save
     @@all << self
