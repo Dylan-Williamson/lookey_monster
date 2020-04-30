@@ -4,7 +4,8 @@ class LookeyMonster::CLI
     print "       WELCOME TO LOOKEY MONSTER!\n\n"
     start
   end
-  
+
+
   def start
     menu
     input = gets.strip.downcase
@@ -15,14 +16,15 @@ class LookeyMonster::CLI
       print_top_songs
       print "\nWhich song would you like more info on? ".light_red
       print "[1-100]\n\n".cyan
-      
-      input = gets.strip
-      
-      if (input != '0') && (input.to_i.to_s != input) or (input.to_i > LookeyMonster::Song.size)
-        print "\nInvalid response. You will now exit automatically.\n\n".light_red
-        exit
-      else
-        print_top_song(input.to_i - 1)
+      loop do
+        input = gets.strip
+        case(input)
+        when (input != '0') && (input.to_i.to_s != input) or (input.to_i > LookeyMonster::Song.size)
+          return "What's That?"
+        when
+          return true
+          print_top_song(input.to_i - 1)
+        end
       end
 
       print "\n\nWould you like to view another song? ".light_red
