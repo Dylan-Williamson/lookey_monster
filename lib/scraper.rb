@@ -15,13 +15,13 @@ class LookeyMonster::Scraper
     input = gets.strip
     
     if input.include?(" ") == true
-      @@url = "https://tunebat.com/Search?q=" + input.downcase.gsub!(" ","+")
+      @url = "https://tunebat.com/Search?q=" + input.downcase.gsub!(" ","+")
     else 
-      @@url = "https://tunebat.com/Search?q=" + input.downcase
+      @url = "https://tunebat.com/Search?q=" + input.downcase
     end
     LookeyMonster::Scraper.get_page
     
-    song_listings = @@parsed_page.css('div.searchResultList.row.main-row')
+    song_listings = @parsed_page.css('div.searchResultList.row.main-row')
 
     if song_listings.first.css('div.row.search-track-name').text == ""
       print "\nSorry, your search found 0 results\n\n".light_red
@@ -40,7 +40,7 @@ class LookeyMonster::Scraper
   end
 
   def self.get_page
-    @@parsed_page = Nokogiri::HTML(open(@@url))
+    @parsed_page = Nokogiri::HTML(open(@url))
   end
 
   def self.scrape_songs
