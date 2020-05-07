@@ -134,6 +134,8 @@ class LookeyMonster::CLI
 #     end
 # end
 
+
+
 def search_loop
     loop do
         print logo 
@@ -142,12 +144,11 @@ def search_loop
         print "------\n\n\n".cyan
         LookeyMonster::Scraper.scraper
         print_searched_song
-    elsif input == "exit"
-        exit
-    else
-        logo
-        print "Care to try again? Enter [list] [search] or [exit]\n\n".light_red
-        start
+        input = gets.strip
+        case input
+        when "exit"
+          break
+        when 
     end
 end
 
@@ -219,34 +220,7 @@ end
     print "Key: ".light_red
     print "#{LookeyMonster::Song.all.first.key}\n\n".cyan
     print "Tempo: ".light_red + "#{LookeyMonster::Song.all.first.tempo}\n\n".cyan
-    print "Want to search for another song? \n".light_red
-    print "Yes[y] or No[n]?\n".cyan
-    
-    input = gets.chomp.downcase
-    if input == "n"
-      print goodbye
-      exit
-    elsif input == "y"
-      print logo
-      LookeyMonster::CLI.new.start 
-    else
-      print logo
-      print "What was that? Please enter Yes[y] or No[n]\n\n".light_red
-      print "Another invalid response will cause you to exit\n\n".cyan
-      
-      input = gets.chomp.downcase
-      
-      if input == "n"
-        print goodbye
-        exit
-      elsif input == "y"
-        print logo
-        LookeyMonster::CLI.new.start
-      else
-        print goodbye
-        exit
-      end
-    end
+    print "Enter another song or enter".light_red + "[exit].\n".cyan
   end
   
   def print_top_song(s)
