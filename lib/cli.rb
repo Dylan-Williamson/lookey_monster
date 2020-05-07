@@ -20,7 +20,7 @@ class LookeyMonster::CLI
 #     PokemonPandemic::APIManager.get_more_pokemon_info(p) if !p.full?
 #     puts p.full_details
 #     puts 'press any key to continue:'
-#     gets
+#     getsf
 # end
 
 def menu_choice
@@ -109,7 +109,7 @@ def list_loop
         print logo
         print_top_songs
         print "\nWhich song would you like more info on? ".light_red
-        print "[1-100]\n\n".cyan
+        print "[1-25]\n\n".cyan
         input = gets.strip
         # case input    
         if (input != '0') && (input.to_i.to_s != input) or (input.to_i > LookeyMonster::Song.size)
@@ -117,6 +117,15 @@ def list_loop
           next
         else
           print_top_song(input.to_i - 1)
+        end
+        input = gets.strip.downcase
+        case input
+        when "yes"
+          redo
+        when "no"
+          break
+        else
+          print "What's that? [yes] or [no]".light_red
         end
     end
 end
@@ -133,9 +142,10 @@ def search_loop
         input = gets.strip
         case input
         when "yes"
-          restart
+          redo
         when "no"
-          break
+          print "\n\n\n\n\n\n\n\nThanks for using ".light_red + "LooKEY Monster!\n\n".cyan
+          exit
         else
           print "Invalid response. Wanna search for another song?\n".light_red + "[yes] or [no]\n".cyan
         end
@@ -153,7 +163,7 @@ end
   #     print logo
   #     print_top_songs
   #     print "\nWhich song would you like more info on? ".light_red
-  #     print "[1-100]\n\n".cyan
+  #     print "[1-25]\n\n".cyan
       
   #     input = gets.strip
       
@@ -237,7 +247,7 @@ end
   
   def print_top_songs
     print "------".cyan
-    print "LooKEY Monster's Top 100 List".light_red
+    print "LooKEY Monster's Top 25 List".light_red
     print "------\n\n".cyan
     LookeyMonster::Song.all.each_with_index do |song, index|
       print "#{index + 1}.".cyan
@@ -249,7 +259,7 @@ end
   
   def menu
     print "--------------".cyan
-    print "Top 100 List".light_red
+    print "Top 25 List".light_red
     print "--------------\n\n".cyan
     print "              Enter [list]\n\n"
     print "-------------".cyan
