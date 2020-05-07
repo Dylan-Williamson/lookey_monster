@@ -8,8 +8,8 @@ class LookeyMonster::CLI
     commands = ["list", "search", "exit"]
     input = gets.strip.downcase
     return input.downcase if commands.include?(input.downcase)
-    if !valid?(input)
-        puts "Wanna try that again?"
+    if commands.include?(input) == false
+        puts "\nWanna try that again?\n".light_red
         return "invalid"
     end
     return input.to_i - 1
@@ -52,6 +52,7 @@ def menu_loop
         input = menu_choice
         case input
         when "exit"
+          print "Thanks for using ".light_red + "LooKEY Monster".cyan
             break
         when "invalid"
             next
@@ -73,7 +74,8 @@ def list_loop
         print logo
         print_top_songs
         print "\nWhich song would you like more info on? ".light_red
-        print "[1-25]\n\n".cyan
+        print "[1-25]\n".cyan
+        print "Or enter ".light_red + "[exit]".cyan + " to exit the program\n\n".light_red
         input = gets.strip.downcase  
         if input == "exit"
           print "\n\nThanks for using ".light_red + "LooKEY Monster!\n\n".cyan
@@ -93,7 +95,7 @@ def list_loop
           print "\n\nThanks for using ".light_red + "LooKEY Monster!\n\n".cyan
           exit
         else
-          print "\n\nWhat's that?".light_red + "\n[yes] or [no]".cyan
+          print "\n\nLet's try that again".light_red
           sleep(1)
         end
     end
@@ -102,10 +104,10 @@ end
 
 def search_loop
     loop do
-        print "-------".cyan
+        print "\n\n\n-------".cyan
         print "Enter track and artist below".light_red
         print "------\n".cyan
-        print "---(".light_red + "Or enter ".cyan + "[exit]".light_red + " to exit the program".cyan + ")---n\n".light_red
+        print "--(".light_red + "Or enter ".cyan + "[exit]".light_red + " to exit the program".cyan + ")--\n\n".light_red
         LookeyMonster::Scraper.scraper
         print_searched_song
         input = gets.strip
@@ -116,7 +118,7 @@ def search_loop
           print "\n\n\n\n\nThanks for using ".light_red + "LooKEY Monster!\n\n".cyan
           exit
         else
-          print "\n        INVALID RESPONSE        \n".light_red + "[yes] or [no]\n".cyan
+          print "\n            INVALID RESPONSE\n".cyan
           next
         end
     end
