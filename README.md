@@ -1,6 +1,6 @@
 # LookeyMonster
 
-Get key, tempo and other musical information via search or upon browsing the top 100 list.
+Get key, tempo and other musical information via search or upon browsing the top 25 list.
 
 ## Installation
 
