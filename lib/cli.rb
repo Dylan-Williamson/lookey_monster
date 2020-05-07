@@ -93,7 +93,7 @@ def menu_loop
         when "invalid"
             next
         when "list"
-            list_loop
+          list_loop
         when "search"
             search_loop
         else
@@ -110,10 +110,13 @@ def list_loop
         print_top_songs
         print "\nWhich song would you like more info on? ".light_red
         print "[1-25]\n\n".cyan
-        input = gets.strip
-        # case input    
-        if (input != '0') && (input.to_i.to_s != input) or (input.to_i > LookeyMonster::Song.size)
+        input = gets.strip.downcase  
+        if input == "exit"
+          print "\n\nThanks for using ".light_red + "LooKEY Monster!\n\n".cyan
+          exit
+        elsif (input != '0') && (input.to_i.to_s != input) or (input.to_i > LookeyMonster::Song.size)
           print "\nInvalid response. Try again".light_red
+          sleep(1)
           next
         else
           print_top_song(input.to_i - 1)
@@ -123,9 +126,11 @@ def list_loop
         when "yes"
           redo
         when "no"
-          break
+          print "\n\nThanks for using ".light_red + "LooKEY Monster!\n\n".cyan
+          exit
         else
-          print "What's that? [yes] or [no]".light_red
+          print "\n\nWhat's that?".light_red + "\n[yes] or [no]".cyan
+          sleep(1)
         end
     end
 end
@@ -144,10 +149,11 @@ def search_loop
         when "yes"
           redo
         when "no"
-          print "\n\n\n\n\n\n\n\nThanks for using ".light_red + "LooKEY Monster!\n\n".cyan
+          print "\n\n\n\n\nThanks for using ".light_red + "LooKEY Monster!\n\n".cyan
           exit
         else
-          print "Invalid response. Wanna search for another song?\n".light_red + "[yes] or [no]\n".cyan
+          print "\nInvalid response. Wanna search for another song?\n".light_red + "[yes] or [no]\n".cyan
+          input = gets.strip.downcase
         end
     end
 end
@@ -211,7 +217,7 @@ end
     print "Key: ".light_red
     print "#{LookeyMonster::Song.all.first.key}\n\n".cyan
     print "Tempo: ".light_red + "#{LookeyMonster::Song.all.first.tempo}\n\n".cyan
-    print "Wanna search for another song?".light_red + "\n[yes] or [no].\n".cyan
+    print "Wanna search for another song?".light_red + "\n[yes] or [no]\n".cyan
   end
   
   def print_top_song(s)
@@ -242,7 +248,7 @@ end
     print "Speechiness: ".light_red
     print "#{LookeyMonster::Song.all[s].speechiness}\n\n".cyan
     print "\n\nWould you like to view another song?\n".light_red
-    print "Yes[y] or No[n]\n\n".cyan
+    print "[yes] or [no]\n\n".cyan
   end
   
   def print_top_songs
