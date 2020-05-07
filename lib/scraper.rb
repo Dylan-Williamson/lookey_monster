@@ -25,6 +25,7 @@ class LookeyMonster::Scraper
 
     if song_listings.first.css('div.row.search-track-name').text == ""
       print "\nSorry, your search found 0 results. Please try again.\n\n".light_red
+      restart
     else
       song_listings.first do |song_listing|
         song = {
