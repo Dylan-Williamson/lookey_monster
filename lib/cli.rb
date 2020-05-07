@@ -15,163 +15,83 @@ class LookeyMonster::CLI
     return input.to_i - 1
   end
 
+  def menu_loop
+      loop do
+          menu
+          input = menu_choice
+          case input
+          when "exit"
+            print "Thanks for using ".light_red + "LooKEY Monster".cyan
+              break
+          when "invalid"
+              next
+          when "list"
+            list_loop
+          when "search"
+              print logo 
+              search_loop
+          else
+              print_top_song(input.to_i - 1)
+          end
+      end
+  end
 
-# def game_loop
-#     loop do
-#         menu
-#         input = get_pokemon_choice
-#         case input
-#         when "exit"
-#             break
-#         when "invalid"
-#             next
-#         when "next"
-#             @page += 1
-#             _, stop = get_page_range
-#             if PokemonPandemic::Pokemon.all.length < stop
-#                 get_pokemon_data
-#             end
-#         when "prev"
-#             if @page <= 1 
-#                 puts "You cannot get that page, you are alredy on page 1!"
-#             else
-#                 @page -= 1
-#             end
-#         else
-#             display_single_pokemon(input)
-#         end
-   
-#     end
-# end
-
-# ---------------------------------------------------------------------------------
-
-def menu_loop
-    loop do
-        menu
-        input = menu_choice
-        case input
-        when "exit"
-          print "Thanks for using ".light_red + "LooKEY Monster".cyan
-            break
-        when "invalid"
+  def list_loop
+      loop do
+          LookeyMonster::Scraper.top_scraper
+          print "\n\n\n\n\n"
+          print logo
+          print_top_songs
+          print "\nWhich song would you like more info on? ".light_red
+          print "[1-25]\n".cyan
+          print "Or enter ".light_red + "[exit]".cyan + " to exit the program\n\n".light_red
+          input = gets.strip.downcase  
+          if input == "exit"
+            print "\n\nThanks for using ".light_red + "LooKEY Monster!\n\n".cyan
+            exit
+          elsif (input != '0') && (input.to_i.to_s != input) or (input.to_i > LookeyMonster::Song.size)
+            print "\nInvalid response. Try again".light_red
+            sleep(1)
             next
-        when "list"
-          list_loop
-        when "search"
-            print logo 
-            search_loop
-        else
+          else
             print_top_song(input.to_i - 1)
-        end
-    end
-end
-
-def list_loop
-    loop do
-        LookeyMonster::Scraper.top_scraper
-        print "\n\n\n\n\n"
-        print logo
-        print_top_songs
-        print "\nWhich song would you like more info on? ".light_red
-        print "[1-25]\n".cyan
-        print "Or enter ".light_red + "[exit]".cyan + " to exit the program\n\n".light_red
-        input = gets.strip.downcase  
-        if input == "exit"
-          print "\n\nThanks for using ".light_red + "LooKEY Monster!\n\n".cyan
-          exit
-        elsif (input != '0') && (input.to_i.to_s != input) or (input.to_i > LookeyMonster::Song.size)
-          print "\nInvalid response. Try again".light_red
-          sleep(1)
-          next
-        else
-          print_top_song(input.to_i - 1)
-        end
-        input = gets.strip.downcase
-        case input
-        when "yes"
-          redo
-        when "no"
-          print "\n\nThanks for using ".light_red + "LooKEY Monster!\n\n".cyan
-          exit
-        else
-          print "\n\nLet's try that again".light_red
-          sleep(1)
-        end
-    end
-end
+          end
+          input = gets.strip.downcase
+          case input
+          when "yes"
+            redo
+          when "no"
+            print "\n\nThanks for using ".light_red + "LooKEY Monster!\n\n".cyan
+            exit
+          else
+            print "\n\nLet's try that again".light_red
+            sleep(1)
+          end
+      end
+  end
 
 
-def search_loop
-    loop do
-        print "\n\n\n-------".cyan
-        print "Enter track and artist below".light_red
-        print "------\n".cyan
-        print "--(".light_red + "Or enter ".cyan + "[exit]".light_red + " to exit the program".cyan + ")--\n\n".light_red
-        LookeyMonster::Scraper.scraper
-        print_searched_song
-        input = gets.strip
-        case input
-        when "yes"
-          redo
-        when "no"
-          print "\n\n\n\n\nThanks for using ".light_red + "LooKEY Monster!\n\n".cyan
-          exit
-        else
-          print "\n            INVALID RESPONSE\n".cyan
-          next
-        end
-    end
-end
-
-
-
-  # def start
-  #   menu
-  #   input = gets.strip.downcase
-  #   if input == "list"
-  #     LookeyMonster::Scraper.top_scraper
-  #     print "\n\n\n\n\n"
-  #     print logo
-  #     print_top_songs
-  #     print "\nWhich song would you like more info on? ".light_red
-  #     print "[1-25]\n\n".cyan
-      
-  #     input = gets.strip
-      
-  #     if (input != '0') && (input.to_i.to_s != input) or (input.to_i > LookeyMonster::Song.size)
-  #       print "\nInvalid response. You will now exit automatically.\n\n".light_red
-  #       exit
-  #     else
-  #       print_top_song(input.to_i - 1)
-  #     end
-      
-  #     input = gets.strip.downcase
-  #     if input == "y"
-  #       logo
-  #       start
-  #     elsif input == "n"
-  #       print goodbye
-  #       exit
-  #     else
-  #       print "\nI'm sorry, could you try that again? Enter Yes[y] or No[n]\n\n".light_red
-  #       start
-  #     end
-  #   elsif input == "search"
-  #     print logo 
-  #     print "-------".cyan
-  #     print "Enter track and artist below".light_red
-  #     print "------\n\n\n".cyan
-  #     LookeyMonster::Scraper.scraper
-  #     print_searched_song
-  #   elsif input == "exit"
-  #     exit
-  #   else
-  #     logo
-  #     print "Care to try again? Enter [list] [search] or [exit]\n\n".light_red
-  #     start
-  #   end
-  # end
+  def search_loop
+      loop do
+          print "\n\n\n-------".cyan
+          print "Enter track and artist below".light_red
+          print "------\n".cyan
+          print "--(".light_red + "Or enter ".cyan + "[exit]".light_red + " to exit the program".cyan + ")--\n\n".light_red
+          LookeyMonster::Scraper.scraper
+          print_searched_song
+          input = gets.strip
+          case input
+          when "yes"
+            redo
+          when "no"
+            print "\n\n\n\n\nThanks for using ".light_red + "LooKEY Monster!\n\n".cyan
+            exit
+          else
+            print "\n            INVALID RESPONSE\n".cyan
+            next
+          end
+      end
+  end
   
   def print_searched_song
     print "\n\n\n\n\n\n"
