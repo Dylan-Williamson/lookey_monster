@@ -1,10 +1,167 @@
 class LookeyMonster::CLI
   def call
-    logo
-    print "       WELCOME TO LOOKEY MONSTER!\n\n"
+    introduction
     start
   end
-  
+#   def start
+#     introduction
+#     get_pokemon_data
+#     game_loop
+# end
+
+# def get_pokemon_data
+#     PokemonPandemic::APIManager.get_pokemon(@page, @limit)
+# end
+
+
+
+# def display_single_pokemon(i)
+#     p = PokemonPandemic::Pokemon.all[i]
+#     PokemonPandemic::APIManager.get_more_pokemon_info(p) if !p.full?
+#     puts p.full_details
+#     puts 'press any key to continue:'
+#     gets
+# end
+
+# def menu_choice
+#     commands = ["list", "search", "exit"]
+#     input = gets.strip.downcase
+#     return input.downcase if commands.include?(input.downcase)
+#     if !valid?(input)
+#         puts "Wanna try that again?"
+#         return "invalid"
+#     end
+#     return input.to_i - 1
+# end
+
+# def valid?(i)
+#     i.to_i.between?(1, PokemonPandemic::Pokemon.all.length)
+# end
+
+# def menu
+#     display_pokemon
+#     display_instructions
+# end
+
+# def display_pokemon
+#     start, stop = get_page_range
+#     puts "\n\nPAGE #{@page}"
+#     PokemonPandemic::Pokemon.all[start...stop].each.with_index(start) do |p, i|
+#         puts "#{i+1}) #{p}"
+#     end
+# end
+
+
+
+# def game_loop
+#     loop do
+#         menu
+#         input = get_pokemon_choice
+#         case input
+#         when "exit"
+#             break
+#         when "invalid"
+#             next
+#         when "next"
+#             @page += 1
+#             _, stop = get_page_range
+#             if PokemonPandemic::Pokemon.all.length < stop
+#                 get_pokemon_data
+#             end
+#         when "prev"
+#             if @page <= 1 
+#                 puts "You cannot get that page, you are alredy on page 1!"
+#             else
+#                 @page -= 1
+#             end
+#         else
+#             display_single_pokemon(input)
+#         end
+   
+#     end
+# end
+
+# ---------------------------------------------------------------------------------
+
+# def menu_loop
+#     loop do
+#         menu
+#         input = menu_choice
+#         case input
+#         when "exit"
+#             break
+#         when "invalid"
+#             next
+#         when "list"
+#             list_loop
+#         when "search"
+#             search_loop
+#         else
+#             print_top_song(input.to_i - 1)
+#         end
+#     end
+# end
+
+# def list_loop
+#     loop do
+#         LookeyMonster::Scraper.top_scraper
+#         print "\n\n\n\n\n"
+#         print logo
+#         print_top_songs
+#         print "\nWhich song would you like more info on? ".light_red
+#         print "[1-100]\n\n".cyan
+#         input = gets.strip
+#         case input    
+#         when (input != '0') && (input.to_i.to_s != input) or (input.to_i > LookeyMonster::Song.size)
+#           print "\nInvalid response. Try again".light_red
+#           next
+#         else
+#           print_top_song(input.to_i - 1)
+#         end
+#     end
+# end
+    
+#     input = gets.strip.downcase
+#     if input == "y"
+#       logo
+#       start
+#     elsif input == "n"
+#       print goodbye
+#       exit
+#     else
+#       print "\nI'm sorry, could you try that again? Enter Yes[y] or No[n]\n\n".light_red
+#       start
+#     end
+# end
+
+def search_loop
+    loop do
+        print logo 
+        print "-------".cyan
+        print "Enter track and artist below".light_red
+        print "------\n\n\n".cyan
+        LookeyMonster::Scraper.scraper
+        print_searched_song
+    elsif input == "exit"
+        exit
+    else
+        logo
+        print "Care to try again? Enter [list] [search] or [exit]\n\n".light_red
+        start
+    end
+end
+
+end
+
+
+# ---------------------------------------------------------------------------------
+
+#if input == "list" do list loop
+#if input == "search" do search loop
+
+end
+
+
   def start
     menu
     input = gets.strip.downcase
@@ -24,10 +181,7 @@ class LookeyMonster::CLI
       else
         print_top_song(input.to_i - 1)
       end
-
-      print "\n\nWould you like to view another song? ".light_red
-      print "Yes[y] or No[n]\n\n".cyan
-
+      
       input = gets.strip.downcase
       if input == "y"
         logo
@@ -86,7 +240,7 @@ class LookeyMonster::CLI
         print goodbye
         exit
       elsif input == "y"
-      print logo
+        print logo
         LookeyMonster::CLI.new.start
       else
         print goodbye
@@ -94,7 +248,7 @@ class LookeyMonster::CLI
       end
     end
   end
-
+  
   def print_top_song(s)
     print "\n\n\n\n\n\n"
     print logo
@@ -122,8 +276,10 @@ class LookeyMonster::CLI
     print "#{LookeyMonster::Song.all[s].loudness}\n\n".cyan
     print "Speechiness: ".light_red
     print "#{LookeyMonster::Song.all[s].speechiness}\n\n".cyan
+    print "\n\nWould you like to view another song? ".light_red
+    print "Yes[y] or No[n]\n\n".cyan
   end
-
+  
   def print_top_songs
     print "------".cyan
     print "LooKEY Monster's Top 100 List".light_red
@@ -147,7 +303,12 @@ class LookeyMonster::CLI
     print "             Enter [search]\n\n"
   end
   
-  def logo 
+  def introduction
+    print "       WELCOME TO LOOKEY MONSTER!\n\n".light_red
+    print logo
+  end
+
+  def logo
     print "\n\n
     ▄▄▌              ▄ •▄ ▄▄▄ . ▄· ▄▌    
     ██•  ▪     ▪     █▌▄▌▪▀▄.▀·▐█▪██▌    
