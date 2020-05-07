@@ -12,9 +12,12 @@ class LookeyMonster::Scraper
   def self.scraper
     LookeyMonster::Song.reset_all
     
-    input = gets.strip
+    input = gets.strip.downcase
     
-    if input.include?(" ") == true
+    if input == "exit"
+      print "\n\nThanks for using ".light_red + "LooKEY Monster\n\n".cyan
+      exit
+    elsif input.include?(" ") == true
       @url = "https://tunebat.com/Search?q=" + input.downcase.gsub!(" ","+")
     else 
       @url = "https://tunebat.com/Search?q=" + input.downcase

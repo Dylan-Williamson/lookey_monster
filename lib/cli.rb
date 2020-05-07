@@ -3,27 +3,8 @@ class LookeyMonster::CLI
     introduction
     menu_loop
   end
-#   def start
-#     introduction
-#     get_pokemon_data
-#     game_loop
-# end
 
-# def get_pokemon_data
-#     PokemonPandemic::APIManager.get_pokemon(@page, @limit)
-# end
-
-
-
-# def display_single_pokemon(i)
-#     p = PokemonPandemic::Pokemon.all[i]
-#     PokemonPandemic::APIManager.get_more_pokemon_info(p) if !p.full?
-#     puts p.full_details
-#     puts 'press any key to continue:'
-#     getsf
-# end
-
-def menu_choice
+  def menu_choice
     commands = ["list", "search", "exit"]
     input = gets.strip.downcase
     return input.downcase if commands.include?(input.downcase)
@@ -32,25 +13,7 @@ def menu_choice
         return "invalid"
     end
     return input.to_i - 1
-end
-
-# def valid?(i)
-#     i.to_i.between?(1, PokemonPandemic::Pokemon.all.length)
-# end
-
-# def menu
-#     display_pokemon
-#     display_instructions
-# end
-
-# def display_pokemon
-#     start, stop = get_page_range
-#     puts "\n\nPAGE #{@page}"
-#     PokemonPandemic::Pokemon.all[start...stop].each.with_index(start) do |p, i|
-#         puts "#{i+1}) #{p}"
-#     end
-# end
-
+  end
 
 
 # def game_loop
@@ -95,6 +58,7 @@ def menu_loop
         when "list"
           list_loop
         when "search"
+            print logo 
             search_loop
         else
             print_top_song(input.to_i - 1)
@@ -138,10 +102,10 @@ end
 
 def search_loop
     loop do
-        print logo 
         print "-------".cyan
         print "Enter track and artist below".light_red
-        print "------\n\n\n".cyan
+        print "------\n".cyan
+        print "---(".light_red + "Or enter ".cyan + "[exit]".light_red + " to exit the program".cyan + ")---n\n".light_red
         LookeyMonster::Scraper.scraper
         print_searched_song
         input = gets.strip
@@ -152,8 +116,8 @@ def search_loop
           print "\n\n\n\n\nThanks for using ".light_red + "LooKEY Monster!\n\n".cyan
           exit
         else
-          print "\nInvalid response. Wanna search for another song?\n".light_red + "[yes] or [no]\n".cyan
-          input = gets.strip.downcase
+          print "\n        INVALID RESPONSE        \n".light_red + "[yes] or [no]\n".cyan
+          next
         end
     end
 end
